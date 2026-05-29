@@ -46,7 +46,7 @@ class TestimonialsSection extends StatelessComponent {
                     [Component.text('· 128 reviews on Meetup')]),
               ]),
             ],
-            href: 'https://www.meetup.com/flutter-belgium/',
+            href: 'https://www.meetup.com/flutter-belgium/feedback-overview/',
             classes: 'rating-badge',
             attributes: {
               'target': '_blank',
