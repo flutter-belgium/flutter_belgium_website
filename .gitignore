@@ -1,0 +1,17 @@
+# FVM - Flutter Version Management
+.fvm/flutter_sdk
+.fvm/version
+
+# Dart
+.dart_tool/
+/build
+pubspec.lock
+lib/*.options.dart
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
