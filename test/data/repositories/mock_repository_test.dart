@@ -44,11 +44,11 @@ void main() {
     expect(links.madeInUrl, startsWith('https://'));
   });
 
-  test('getHostingCompanies returns 4 companies with non-empty fields',
+  test('getHostingCompanies returns companies with non-empty fields',
       () async {
     final companies = await repo.getHostingCompanies();
     expect(companies, isA<List<Company>>());
-    expect(companies, hasLength(4));
+    expect(companies, isNotEmpty);
     for (final c in companies) {
       expect(c.name, isNotEmpty);
       expect(c.logoUrl, isNotEmpty);

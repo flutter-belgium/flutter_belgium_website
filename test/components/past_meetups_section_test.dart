@@ -25,7 +25,7 @@ void main() {
     tester.pumpComponent(PastMeetupsSection(
         meetups: meetups,
         meetupGroupUrl: 'https://www.meetup.com/flutter-belgium/'));
-    expect(find.tag('article'), findsNComponents(2));
+    expect(find.tag('a'), findsNComponents(2));
     expect(find.tag('img'), findsNComponents(2));
   });
 }
