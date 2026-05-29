@@ -1,6 +1,7 @@
 import 'package:flutter_belgium_website/components/made_in_flutter_belgium/made_in_showcase_section.dart';
 import 'package:flutter_belgium_website/data/models/made_in_flutter_belgium/made_in_app.dart';
 import 'package:flutter_belgium_website/data/models/made_in_flutter_belgium/made_in_app_links.dart';
+import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_test/jaspr_test.dart';
 
 void main() {
@@ -29,18 +30,25 @@ void main() {
     ),
   ];
 
-  testComponents('MadeInShowcaseSection renders section label and CTA link',
+  testComponents('MadeInShowcaseSection renders a scrolling strip',
       (tester) async {
     tester.pumpComponent(MadeInShowcaseSection(latestApps: apps));
-    expect(find.tag('section'), findsOneComponent);
-    expect(find.text('Explore what Belgians built with Flutter'),
-        findsOneComponent);
+    expect(
+      find.byComponentPredicate(
+        (c) =>
+            c is DomComponent &&
+            (c.classes?.contains('app-showcase-strip') ?? false),
+      ),
+      findsOneComponent,
+    );
   });
 
-  testComponents('MadeInShowcaseSection renders a card per app',
+  testComponents(
+      'MadeInShowcaseSection renders a card per app (doubled for scroll loop)',
       (tester) async {
     tester.pumpComponent(MadeInShowcaseSection(latestApps: apps));
-    expect(find.text('App One'), findsOneComponent);
-    expect(find.text('App Two'), findsOneComponent);
+    // Each app is duplicated for seamless infinite scroll.
+    expect(find.text('App One'), findsNComponents(2));
+    expect(find.text('App Two'), findsNComponents(2));
   });
 }

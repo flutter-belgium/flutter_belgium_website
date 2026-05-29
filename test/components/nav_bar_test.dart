@@ -20,7 +20,6 @@ void main() {
     expect(find.text('About'), findsNComponents(2));
     expect(find.text('Meetups'), findsNComponents(2));
     expect(find.text('Talks'), findsNComponents(2));
-    expect(find.text('Join'), findsNComponents(2));
-    expect(find.text('Join Slack'), findsNComponents(2));
+    expect(find.text('Join Flutter Belgium'), findsNComponents(2));
   });
 }

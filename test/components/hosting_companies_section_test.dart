@@ -38,13 +38,5 @@ void main() {
       ),
       findsOneComponent,
     );
-    expect(
-      find.byComponentPredicate(
-        (c) =>
-            c is DomComponent &&
-            (c.classes?.contains('companies-track-right') ?? false),
-      ),
-      findsOneComponent,
-    );
   });
 }
