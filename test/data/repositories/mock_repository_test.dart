@@ -44,8 +44,7 @@ void main() {
     expect(links.madeInUrl, startsWith('https://'));
   });
 
-  test('getHostingCompanies returns companies with non-empty fields',
-      () async {
+  test('getHostingCompanies returns companies with non-empty fields', () async {
     final companies = await repo.getHostingCompanies();
     expect(companies, isA<List<Company>>());
     expect(companies, isNotEmpty);
