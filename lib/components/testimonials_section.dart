@@ -25,7 +25,19 @@ class TestimonialsSection extends StatelessComponent {
           ]),
           a(
             [
-              div(classes: 'rating-stars', [Component.text('★★★★★')]),
+              div(classes: 'rating-stars', [
+                for (var i = 0; i < 4; i++)
+                  img(
+                    src: '/assets/icons/star-full.svg',
+                    alt: '',
+                    classes: 'rating-star-icon',
+                  ),
+                img(
+                  src: '/assets/icons/star-half.svg',
+                  alt: '',
+                  classes: 'rating-star-icon',
+                ),
+              ]),
               div(classes: 'rating-meta', [
                 span(classes: 'rating-score', [Component.text('4.7')]),
                 span(classes: 'rating-divider', [Component.text('/5')]),

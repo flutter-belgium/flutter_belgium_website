@@ -128,7 +128,8 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
 
   @override
   Future<CommunityLinks> getCommunityLinks() async => const CommunityLinks(
-        slackInviteUrl: 'https://join.slack.com/t/flutter-belgium/shared_invite/zt-2w7m73ron-5NZWiebmvxXAzBairbAisw',
+        slackInviteUrl:
+            'https://join.slack.com/t/flutter-belgium/shared_invite/zt-2w7m73ron-5NZWiebmvxXAzBairbAisw',
         youtubeChannelUrl: 'https://www.youtube.com/@flutter-belgium',
         meetupUrl: 'https://www.meetup.com/flutter-belgium/',
         linkedinUrl: 'https://www.linkedin.com/company/flutter-belgium/',
@@ -137,13 +138,16 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
       );
 
   @override
-  Future<List<Company>> getHostingCompanies() async => List.unmodifiable(_companies);
+  Future<List<Company>> getHostingCompanies() async =>
+      List.unmodifiable(_companies);
 
   @override
-  Future<List<Testimonial>> getTestimonials() async => List.unmodifiable(_testimonials);
+  Future<List<Testimonial>> getTestimonials() async =>
+      List.unmodifiable(_testimonials);
 
   @override
-  Future<List<TeamMember>> getTeamMembers() async => List.unmodifiable(_teamMembers);
+  Future<List<TeamMember>> getTeamMembers() async =>
+      List.unmodifiable(_teamMembers);
 
   @override
   Future<List<Sponsor>> getSponsors() async => List.unmodifiable(_sponsors);
