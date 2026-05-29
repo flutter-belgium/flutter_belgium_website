@@ -51,11 +51,13 @@ class HomePage extends StatelessComponent {
       TeamSection(members: members),
       NextMeetupSection(meetup: nextMeetup, communityLinks: communityLinks),
       HostingCompaniesSection(companies: companies),
-      PastMeetupsSection(meetups: pastMeetups, meetupGroupUrl: communityLinks.meetupUrl),
+      PastMeetupsSection(
+          meetups: pastMeetups, meetupGroupUrl: communityLinks.meetupUrl),
       TalksSection(talks: talks),
       TestimonialsSection(testimonials: testimonials),
       JoinSection(communityLinks: communityLinks),
-      SponsorSection(sponsors: sponsors, contactUrl: communityLinks.slackInviteUrl),
+      SponsorSection(
+          sponsors: sponsors, contactUrl: communityLinks.slackInviteUrl),
       Footer(communityLinks: communityLinks),
     ]);
   }

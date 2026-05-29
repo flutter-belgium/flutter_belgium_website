@@ -17,7 +17,8 @@ class HostingCompaniesSection extends StatelessComponent {
     return section(classes: 'hosting-companies', [
       div(classes: 'hosting-companies-header container', [
         p(classes: 'section-label', [Component.text('Hosted at')]),
-        h2(classes: 'section-title',
+        h2(
+            classes: 'section-title',
             [Component.text('Flutter Belgium hosting companies')]),
       ]),
       div(classes: 'companies-carousel', [

@@ -5,10 +5,22 @@ import 'package:jaspr_test/jaspr_test.dart';
 
 void main() {
   const companies = [
-    Company(name: 'iO', logoUrl: '/assets/logos/io.svg', websiteUrl: 'https://iodigital.com'),
-    Company(name: 'Zimmo', logoUrl: '/assets/logos/zimmo.svg', websiteUrl: 'https://zimmo.be'),
-    Company(name: 'Cegeka', logoUrl: '/assets/logos/cegeka.svg', websiteUrl: 'https://cegeka.com'),
-    Company(name: 'Cronos', logoUrl: '/assets/logos/cronos.svg', websiteUrl: 'https://cronos.be'),
+    Company(
+        name: 'iO',
+        logoUrl: '/assets/logos/io.svg',
+        websiteUrl: 'https://iodigital.com'),
+    Company(
+        name: 'Zimmo',
+        logoUrl: '/assets/logos/zimmo.svg',
+        websiteUrl: 'https://zimmo.be'),
+    Company(
+        name: 'Cegeka',
+        logoUrl: '/assets/logos/cegeka.svg',
+        websiteUrl: 'https://cegeka.com'),
+    Company(
+        name: 'Cronos',
+        logoUrl: '/assets/logos/cronos.svg',
+        websiteUrl: 'https://cronos.be'),
   ];
 
   testComponents(
@@ -20,13 +32,17 @@ void main() {
     expect(find.text('Flutter Belgium hosting companies'), findsOneComponent);
     expect(
       find.byComponentPredicate(
-        (c) => c is DomComponent && (c.classes?.contains('companies-track-left') ?? false),
+        (c) =>
+            c is DomComponent &&
+            (c.classes?.contains('companies-track-left') ?? false),
       ),
       findsOneComponent,
     );
     expect(
       find.byComponentPredicate(
-        (c) => c is DomComponent && (c.classes?.contains('companies-track-right') ?? false),
+        (c) =>
+            c is DomComponent &&
+            (c.classes?.contains('companies-track-right') ?? false),
       ),
       findsOneComponent,
     );

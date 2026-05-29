@@ -44,7 +44,8 @@ void main() {
     expect(links.madeInUrl, startsWith('https://'));
   });
 
-  test('getHostingCompanies returns 4 companies with non-empty fields', () async {
+  test('getHostingCompanies returns 4 companies with non-empty fields',
+      () async {
     final companies = await repo.getHostingCompanies();
     expect(companies, isA<List<Company>>());
     expect(companies, hasLength(4));
@@ -55,7 +56,8 @@ void main() {
     }
   });
 
-  test('getTestimonials returns 3 testimonials with non-empty fields', () async {
+  test('getTestimonials returns 3 testimonials with non-empty fields',
+      () async {
     final testimonials = await repo.getTestimonials();
     expect(testimonials, isA<List<Testimonial>>());
     expect(testimonials, hasLength(3));

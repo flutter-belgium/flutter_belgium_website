@@ -25,8 +25,7 @@ void main() {
   testComponents(
       'TestimonialsSection renders section label, title, and two scroll rows',
       (tester) async {
-    tester.pumpComponent(
-        const TestimonialsSection(testimonials: testimonials));
+    tester.pumpComponent(const TestimonialsSection(testimonials: testimonials));
     expect(find.tag('section'), findsOneComponent);
     expect(find.text('Community'), findsOneComponent);
     expect(find.text('What Flutter Belgium members say'), findsOneComponent);

@@ -180,6 +180,5 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
       List.unmodifiable(_teamMembers);
 
   @override
-  Future<List<Sponsor>> getSponsors() async =>
-      List.unmodifiable(_sponsors);
+  Future<List<Sponsor>> getSponsors() async => List.unmodifiable(_sponsors);
 }

@@ -30,7 +30,10 @@ class JoinSection extends StatelessComponent {
           ),
           a(
             [
-              img(src: '/assets/icons/youtube.svg', alt: '', classes: 'btn-icon'),
+              img(
+                  src: '/assets/icons/youtube.svg',
+                  alt: '',
+                  classes: 'btn-icon'),
               const Component.text('YouTube'),
             ],
             href: communityLinks.youtubeChannelUrl,
@@ -39,7 +42,10 @@ class JoinSection extends StatelessComponent {
           ),
           a(
             [
-              img(src: '/assets/icons/meetup.svg', alt: '', classes: 'btn-icon'),
+              img(
+                  src: '/assets/icons/meetup.svg',
+                  alt: '',
+                  classes: 'btn-icon'),
               const Component.text('Meetup'),
             ],
             href: communityLinks.meetupUrl,
@@ -48,7 +54,10 @@ class JoinSection extends StatelessComponent {
           ),
           a(
             [
-              img(src: '/assets/icons/linkedin.svg', alt: '', classes: 'btn-icon'),
+              img(
+                  src: '/assets/icons/linkedin.svg',
+                  alt: '',
+                  classes: 'btn-icon'),
               const Component.text('LinkedIn'),
             ],
             href: communityLinks.linkedinUrl,
@@ -57,7 +66,10 @@ class JoinSection extends StatelessComponent {
           ),
           a(
             [
-              img(src: '/assets/icons/github.svg', alt: '', classes: 'btn-icon'),
+              img(
+                  src: '/assets/icons/github.svg',
+                  alt: '',
+                  classes: 'btn-icon'),
               const Component.text('GitHub'),
             ],
             href: communityLinks.githubUrl,

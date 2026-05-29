@@ -35,11 +35,14 @@ void main() async {
     },
     head: [
       link(rel: 'preconnect', href: 'https://fonts.googleapis.com'),
-      link(rel: 'preconnect', href: 'https://fonts.gstatic.com',
+      link(
+          rel: 'preconnect',
+          href: 'https://fonts.gstatic.com',
           attributes: {'crossorigin': ''}),
       link(
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Google+Sans+Flex:ital,opsz,wght@0,12..72,100..900;1,12..72,100..900&display=swap',
+        href:
+            'https://fonts.googleapis.com/css2?family=Google+Sans+Flex:ital,opsz,wght@0,12..72,100..900;1,12..72,100..900&display=swap',
       ),
       link(rel: 'stylesheet', href: 'styles.css'),
       link(rel: 'icon', type: 'image/svg+xml', href: 'assets/logo-mark.svg'),
@@ -68,8 +71,7 @@ void main() async {
       Route(
         path: '/terms',
         title: 'Terms & Conditions | Flutter Belgium',
-        builder: (context, state) =>
-            TermsPage(communityLinks: communityLinks),
+        builder: (context, state) => TermsPage(communityLinks: communityLinks),
       ),
       Route(
         path: '/branding',

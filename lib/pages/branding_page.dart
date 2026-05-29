@@ -26,7 +26,9 @@ class BrandingPage extends StatelessComponent {
           ]),
 
           // Color logos
-          h2(classes: 'branding-section-title', [const Component.text('Color logos')]),
+          h2(
+              classes: 'branding-section-title',
+              [const Component.text('Color logos')]),
           div(classes: 'branding-grid', [
             _logoCard(
               src: '/assets/logo-default.svg',
@@ -49,7 +51,9 @@ class BrandingPage extends StatelessComponent {
           ]),
 
           // White logos
-          h2(classes: 'branding-section-title', [const Component.text('White logos')]),
+          h2(
+              classes: 'branding-section-title',
+              [const Component.text('White logos')]),
           div(classes: 'branding-grid', [
             _logoCard(
               src: '/assets/logo-full-white.svg',
@@ -73,14 +77,26 @@ class BrandingPage extends StatelessComponent {
           ]),
 
           // Colors
-          h2(classes: 'branding-section-title', [const Component.text('Brand colors')]),
+          h2(
+              classes: 'branding-section-title',
+              [const Component.text('Brand colors')]),
           div(classes: 'branding-colors', [
-            _colorSwatch(name: 'Navy', hex: '#021F40', classes: 'branding-swatch-navy'),
-            _colorSwatch(name: 'Sky', hex: '#027DFD', classes: 'branding-swatch-sky'),
-            _colorSwatch(name: 'Yellow', hex: '#FFD648', classes: 'branding-swatch-yellow'),
-            _colorSwatch(name: 'Yellow Light', hex: '#FFF275', classes: 'branding-swatch-yellow-light'),
-            _colorSwatch(name: 'Red', hex: '#F25D50', classes: 'branding-swatch-red'),
-            _colorSwatch(name: 'Grey', hex: '#E6EDFF', classes: 'branding-swatch-grey'),
+            _colorSwatch(
+                name: 'Navy', hex: '#021F40', classes: 'branding-swatch-navy'),
+            _colorSwatch(
+                name: 'Sky', hex: '#027DFD', classes: 'branding-swatch-sky'),
+            _colorSwatch(
+                name: 'Yellow',
+                hex: '#FFD648',
+                classes: 'branding-swatch-yellow'),
+            _colorSwatch(
+                name: 'Yellow Light',
+                hex: '#FFF275',
+                classes: 'branding-swatch-yellow-light'),
+            _colorSwatch(
+                name: 'Red', hex: '#F25D50', classes: 'branding-swatch-red'),
+            _colorSwatch(
+                name: 'Grey', hex: '#E6EDFF', classes: 'branding-swatch-grey'),
           ]),
         ]),
       ]),
@@ -95,7 +111,9 @@ class BrandingPage extends StatelessComponent {
     required bool dark,
     bool sky = false,
   }) {
-    final bg = sky ? 'branding-card-sky' : (dark ? 'branding-card-dark' : 'branding-card-light');
+    final bg = sky
+        ? 'branding-card-sky'
+        : (dark ? 'branding-card-dark' : 'branding-card-light');
     return div(classes: 'branding-card $bg', [
       div(classes: 'branding-card-preview', [
         img(src: src, alt: label, classes: 'branding-logo-img'),

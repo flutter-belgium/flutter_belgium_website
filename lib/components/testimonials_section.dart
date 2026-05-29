@@ -19,7 +19,8 @@ class TestimonialsSection extends StatelessComponent {
         div(classes: 'testimonials-header-row', [
           div(classes: 'testimonials-header-text', [
             p(classes: 'section-label', [Component.text('Community')]),
-            h2(classes: 'section-title',
+            h2(
+                classes: 'section-title',
                 [Component.text('What Flutter Belgium members say')]),
           ]),
           a(
@@ -28,12 +29,18 @@ class TestimonialsSection extends StatelessComponent {
               div(classes: 'rating-meta', [
                 span(classes: 'rating-score', [Component.text('4.7')]),
                 span(classes: 'rating-divider', [Component.text('/5')]),
-                span(classes: 'rating-count', [Component.text('· 128 reviews on Meetup')]),
+                span(
+                    classes: 'rating-count',
+                    [Component.text('· 128 reviews on Meetup')]),
               ]),
             ],
             href: 'https://www.meetup.com/flutter-belgium/',
             classes: 'rating-badge',
-            attributes: {'target': '_blank', 'rel': 'noopener noreferrer', 'aria-label': '4.7 out of 5 — 128 reviews on Meetup'},
+            attributes: {
+              'target': '_blank',
+              'rel': 'noopener noreferrer',
+              'aria-label': '4.7 out of 5 — 128 reviews on Meetup'
+            },
           ),
         ]),
       ]),
@@ -76,9 +83,11 @@ class TestimonialsSection extends StatelessComponent {
             ),
           ]),
         div(classes: 'testimonial-author-info', [
-          p(classes: 'testimonial-name',
+          p(
+              classes: 'testimonial-name',
               [Component.text(testimonial.authorName)]),
-          p(classes: 'testimonial-role',
+          p(
+              classes: 'testimonial-role',
               [Component.text(testimonial.authorRole)]),
         ]),
       ]),

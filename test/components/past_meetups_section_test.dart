@@ -22,7 +22,9 @@ void main() {
 
   testComponents('PastMeetupsSection renders a card per meetup',
       (tester) async {
-    tester.pumpComponent(PastMeetupsSection(meetups: meetups, meetupGroupUrl: 'https://www.meetup.com/flutter-belgium/'));
+    tester.pumpComponent(PastMeetupsSection(
+        meetups: meetups,
+        meetupGroupUrl: 'https://www.meetup.com/flutter-belgium/'));
     expect(find.tag('article'), findsNComponents(2));
     expect(find.tag('img'), findsNComponents(2));
   });

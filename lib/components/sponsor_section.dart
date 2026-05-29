@@ -4,7 +4,8 @@ import 'package:jaspr/dom.dart';
 import '../data/models/sponsor.dart';
 
 class SponsorSection extends StatelessComponent {
-  const SponsorSection({required this.sponsors, required this.contactUrl, super.key});
+  const SponsorSection(
+      {required this.sponsors, required this.contactUrl, super.key});
 
   final List<Sponsor> sponsors;
   final String contactUrl;
@@ -14,7 +15,8 @@ class SponsorSection extends StatelessComponent {
     return section(classes: 'sponsors', [
       div(classes: 'sponsors-inner container', [
         const p(classes: 'section-label', [Component.text('Sponsors')]),
-        const h2(classes: 'section-title', [Component.text('Made possible by')]),
+        const h2(
+            classes: 'section-title', [Component.text('Made possible by')]),
         const p(classes: 'sponsors-sub section-body', [
           Component.text(
               'These companies invested in a professional livestream setup so every meetup is recorded and available to rewatch, even for those who could not attend in person.'),
@@ -37,7 +39,9 @@ class _BecomeSponsorCard extends StatelessComponent {
     return a(
       [
         div(classes: 'become-sponsor-icon', [Component.text('+')]),
-        span(classes: 'become-sponsor-label', [Component.text('Become a sponsor')]),
+        span(
+            classes: 'become-sponsor-label',
+            [Component.text('Become a sponsor')]),
       ],
       href: contactUrl,
       classes: 'sponsor-card sponsor-card-cta',

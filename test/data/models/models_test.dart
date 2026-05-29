@@ -81,7 +81,8 @@ void main() {
   });
 
   group('TeamMember', () {
-    test('constructs with required fields, optional fields default to null', () {
+    test('constructs with required fields, optional fields default to null',
+        () {
       const member = TeamMember(
         name: 'Koen Van Looveren',
         role: 'Organiser',

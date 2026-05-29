@@ -25,7 +25,9 @@ class LegalPage extends StatelessComponent {
         div(classes: 'legal-inner container', [
           h1(classes: 'legal-title', [Component.text(title)]),
           for (final section in sections) ...[
-            h2(classes: 'legal-section-title', [Component.text(section.heading)]),
+            h2(
+                classes: 'legal-section-title',
+                [Component.text(section.heading)]),
             for (final paragraph in section.paragraphs)
               p(classes: 'legal-body', [Component.text(paragraph)]),
           ],

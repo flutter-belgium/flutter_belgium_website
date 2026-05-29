@@ -13,7 +13,8 @@ class TeamSection extends StatelessComponent {
     return section(classes: 'team', [
       div(classes: 'team-inner container', [
         const p(classes: 'section-label', [Component.text('Team')]),
-        const h2(classes: 'section-title',
+        const h2(
+            classes: 'section-title',
             [Component.text('The people behind Flutter Belgium')]),
         div(classes: 'team-grid', [
           for (final member in members) _MemberCard(member: member),
@@ -41,17 +42,35 @@ class _MemberCard extends StatelessComponent {
         div(classes: 'team-links', [
           if (member.linkedinUrl != null)
             a(
-              [img(src: '/assets/icons/linkedin.svg', alt: 'LinkedIn', classes: 'team-link-icon')],
+              [
+                img(
+                    src: '/assets/icons/linkedin.svg',
+                    alt: 'LinkedIn',
+                    classes: 'team-link-icon')
+              ],
               href: member.linkedinUrl!,
               classes: 'team-link',
-              attributes: {'target': '_blank', 'rel': 'noopener noreferrer', 'aria-label': 'LinkedIn'},
+              attributes: {
+                'target': '_blank',
+                'rel': 'noopener noreferrer',
+                'aria-label': 'LinkedIn'
+              },
             ),
           if (member.githubUrl != null)
             a(
-              [img(src: '/assets/icons/github.svg', alt: 'GitHub', classes: 'team-link-icon')],
+              [
+                img(
+                    src: '/assets/icons/github.svg',
+                    alt: 'GitHub',
+                    classes: 'team-link-icon')
+              ],
               href: member.githubUrl!,
               classes: 'team-link',
-              attributes: {'target': '_blank', 'rel': 'noopener noreferrer', 'aria-label': 'GitHub'},
+              attributes: {
+                'target': '_blank',
+                'rel': 'noopener noreferrer',
+                'aria-label': 'GitHub'
+              },
             ),
         ]),
     ]);

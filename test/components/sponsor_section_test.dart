@@ -14,7 +14,8 @@ void main() {
         websiteUrl: 'https://diskwriter.be'),
   ];
 
-  testComponents('SponsorSection renders label, title, and one card per sponsor',
+  testComponents(
+      'SponsorSection renders label, title, and one card per sponsor',
       (tester) async {
     tester.pumpComponent(const SponsorSection(
         sponsors: sponsors,

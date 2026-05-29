@@ -48,10 +48,14 @@ class NavBar extends StatelessComponent {
         ),
       ]),
       div(classes: 'navbar-mobile-menu', [
-        a([Component.text('About')], href: '#about', classes: 'navbar-mobile-link'),
-        a([Component.text('Meetups')], href: '#meetups', classes: 'navbar-mobile-link'),
-        a([Component.text('Talks')], href: '#talks', classes: 'navbar-mobile-link'),
-        a([Component.text('Join')], href: '#join', classes: 'navbar-mobile-link'),
+        a([Component.text('About')],
+            href: '#about', classes: 'navbar-mobile-link'),
+        a([Component.text('Meetups')],
+            href: '#meetups', classes: 'navbar-mobile-link'),
+        a([Component.text('Talks')],
+            href: '#talks', classes: 'navbar-mobile-link'),
+        a([Component.text('Join')],
+            href: '#join', classes: 'navbar-mobile-link'),
         a(
           [Component.text('Join Slack')],
           href: communityLinks.slackInviteUrl,

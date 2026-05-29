@@ -19,14 +19,17 @@ void main() {
     expect(find.tag('section'), findsOneComponent);
     expect(
       find.byComponentPredicate(
-        (c) => c is DomComponent && (c.classes?.contains('hero-content') ?? false),
+        (c) =>
+            c is DomComponent && (c.classes?.contains('hero-content') ?? false),
         description: 'element with class hero-content',
       ),
       findsOneComponent,
     );
     expect(
       find.byComponentPredicate(
-        (c) => c is DomComponent && (c.classes?.contains('hero-logomark') ?? false),
+        (c) =>
+            c is DomComponent &&
+            (c.classes?.contains('hero-logomark') ?? false),
         description: 'element with class hero-logomark',
       ),
       findsOneComponent,
