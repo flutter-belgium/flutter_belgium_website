@@ -1,6 +1,6 @@
 # Flutter Belgium Website
 
-The official website for [Flutter Belgium](https://flutterbelgium.be) — the Belgian Flutter community.
+The official website for [Flutter Belgium](https://flutterbelgium.be), the Belgian Flutter community.
 
 Built with [Jaspr](https://github.com/schultek/jaspr) and hosted on GitHub Pages.
 
