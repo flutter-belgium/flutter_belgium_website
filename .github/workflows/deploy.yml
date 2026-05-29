@@ -8,6 +8,7 @@ on:
   repository_dispatch:
     types:
       - content-updated
+  workflow_dispatch:
 
 permissions:
   contents: read
