@@ -21,7 +21,7 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
         id: 'meetup-2',
         title: 'Flutter Belgium #25',
         date: DateTime(2025, 10, 8),
-        hostCompany: 'Icapps',
+        hostCompany: 'icapps',
         location: 'Antwerp',
         thumbnailUrl: '/assets/meetup/meetup_25.avif',
         meetupUrl: 'https://www.meetup.com/flutter-belgium/events/306394784'),
