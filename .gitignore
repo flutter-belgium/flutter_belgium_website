@@ -15,3 +15,7 @@ lib/*.options.dart
 
 # OS
 .DS_Store
+
+# Docs
+.superpowers
+docs/superpowers/
