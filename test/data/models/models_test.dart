@@ -1,7 +1,6 @@
 import 'package:flutter_belgium_website/data/models/community_links.dart';
 import 'package:flutter_belgium_website/data/models/company.dart';
 import 'package:flutter_belgium_website/data/models/meetup.dart';
-import 'package:flutter_belgium_website/data/models/speaker.dart';
 import 'package:flutter_belgium_website/data/models/sponsor.dart';
 import 'package:flutter_belgium_website/data/models/talk.dart';
 import 'package:flutter_belgium_website/data/models/team_member.dart';
@@ -24,16 +23,10 @@ void main() {
   });
 
   group('Talk', () {
-    test('constructs with required fields, youtubeUrl defaults to null', () {
-      const talk = Talk(
-        id: 't1',
-        title: 'Building with Flutter',
-        speaker: Speaker(name: 'Jane Doe'),
-        meetupId: '1',
-        meetupTitle: 'Flutter Belgium #1',
-      );
-      expect(talk.youtubeUrl, isNull);
-      expect(talk.meetupTitle, 'Flutter Belgium #1');
+    test('constructs with youtubeUrl and derives thumbnail', () {
+      const talk = Talk(youtubeUrl: 'https://www.youtube.com/watch?v=abc123');
+      expect(talk.youtubeUrl, startsWith('https://'));
+      expect(talk.thumbnailUrl, contains('abc123'));
     });
   });
 

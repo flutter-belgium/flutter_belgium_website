@@ -24,12 +24,12 @@ void main() {
     expect(meetups, isNotEmpty);
   });
 
-  test('getAllTalks returns talks with meetupTitle set', () async {
+  test('getAllTalks returns talks with a youtubeUrl', () async {
     final talks = await repo.getAllTalks();
     expect(talks, isA<List<Talk>>());
     expect(talks, isNotEmpty);
     for (final talk in talks) {
-      expect(talk.meetupTitle, isNotEmpty);
+      expect(talk.youtubeUrl, startsWith('https://'));
     }
   });
 

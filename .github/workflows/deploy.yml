@@ -67,6 +67,13 @@ jobs:
       - name: Build static site
         run: dart run jaspr_cli:jaspr build
 
+      - name: Remove Dart build artifacts
+        run: |
+          rm -rf ./build/jaspr/packages
+          rm -rf ./build/jaspr/.dart_tool
+          rm -f  ./build/jaspr/.build.manifest
+          rm -f  ./build/jaspr/main.client.dart
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 

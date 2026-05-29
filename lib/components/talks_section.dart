@@ -17,9 +17,7 @@ class TalksSection extends StatelessComponent {
             classes: 'section-title',
             [Component.text('Catch up on what you missed')]),
         div(classes: 'talks-grid', [
-          for (final talk in talks)
-            if (talk.youtubeUrl != null && talk.thumbnailUrl != null)
-              _TalkCard(talk: talk),
+          for (final talk in talks) _TalkCard(talk: talk),
         ]),
       ]),
     ]);
@@ -37,15 +35,15 @@ class _TalkCard extends StatelessComponent {
       [
         article(classes: 'talk-card', [
           img(
-            src: talk.thumbnailUrl!,
-            alt: '${talk.title}, ${talk.speaker.name}'
-                '${talk.speaker.company != null ? ', ${talk.speaker.company}' : ''}',
+            src: talk.thumbnailUrl,
+            alt: 'Flutter Belgium talk',
             classes: 'talk-thumbnail',
           ),
         ]),
       ],
-      href: talk.youtubeUrl!,
-      attributes: {'target': '_blank', 'rel': 'noopener noreferrer'},
+      href: talk.youtubeUrl,
+      target: Target.blank,
+      attributes: {'rel': 'noopener noreferrer'},
     );
   }
 }

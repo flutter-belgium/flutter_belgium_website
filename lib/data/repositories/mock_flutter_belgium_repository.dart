@@ -1,7 +1,6 @@
 import '../models/community_links.dart';
 import '../models/company.dart';
 import '../models/meetup.dart';
-import '../models/speaker.dart';
 import '../models/sponsor.dart';
 import '../models/talk.dart';
 import '../models/team_member.dart';
@@ -11,66 +10,35 @@ import 'flutter_belgium_repository.dart';
 class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
   static final List<Meetup> _pastMeetups = [
     Meetup(
-        id: 'meetup-1',
-        title: 'Flutter Belgium #1',
-        date: DateTime(2023, 11, 16),
-        hostCompany: 'iO',
-        location: 'Ghent',
-        thumbnailUrl: '/assets/meetup/flutter-belgium-meetup.avif',
-        meetupUrl: 'https://www.meetup.com/flutter-belgium/'),
+        id: 'meetup-3',
+        title: 'Flutter Belgium #26',
+        date: DateTime(2026, 2, 3),
+        hostCompany: 'ACA Group',
+        location: 'Gent',
+        thumbnailUrl: '/assets/meetup/meetup_26.avif',
+        meetupUrl: 'https://www.meetup.com/flutter-belgium/events/312351623'),
     Meetup(
         id: 'meetup-2',
-        title: 'Flutter Belgium #2',
-        date: DateTime(2024, 2, 22),
-        hostCompany: 'Zimmo',
+        title: 'Flutter Belgium #25',
+        date: DateTime(2025, 10, 8),
+        hostCompany: 'Icapps',
         location: 'Antwerp',
-        thumbnailUrl: '/assets/meetup/flutter-belgium-meetup.avif',
-        meetupUrl: 'https://www.meetup.com/flutter-belgium/'),
+        thumbnailUrl: '/assets/meetup/meetup_25.avif',
+        meetupUrl: 'https://www.meetup.com/flutter-belgium/events/306394784'),
     Meetup(
-        id: 'meetup-3',
-        title: 'Flutter Belgium #3',
-        date: DateTime(2024, 5, 30),
-        hostCompany: 'Cegeka',
-        location: 'Hasselt',
-        thumbnailUrl: '/assets/meetup/flutter-belgium-meetup.avif',
-        meetupUrl: 'https://www.meetup.com/flutter-belgium/'),
+        id: 'meetup-1',
+        title: 'Flutter Belgium #24',
+        date: DateTime(2025, 6, 11),
+        hostCompany: 'MobileGeneration',
+        location: 'Brussels',
+        thumbnailUrl: '/assets/meetup/meetup_24.avif',
+        meetupUrl: 'https://www.meetup.com/flutter-belgium/events/306394783'),
   ];
 
-  static final List<Talk> _talks = [
-    const Talk(
-        id: 'talk-1',
-        title: 'Getting Started with Flutter',
-        speaker: Speaker(
-            name: 'Jan Peeters', jobTitle: 'Flutter Developer', company: 'iO'),
-        meetupId: 'meetup-1',
-        meetupTitle: 'Flutter Belgium #1',
-        youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        thumbnailUrl: '/assets/talk/flutter_belgium_talk.jpeg'),
-    const Talk(
-        id: 'talk-2',
-        title: 'State Management in 2024',
-        speaker: Speaker(
-            name: 'Lisa Maes', jobTitle: 'Senior Developer', company: 'Zimmo'),
-        meetupId: 'meetup-2',
-        meetupTitle: 'Flutter Belgium #2',
-        youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        thumbnailUrl: '/assets/talk/flutter_belgium_talk.jpeg'),
-    const Talk(
-        id: 'talk-3',
-        title: 'Flutter Web in Production',
-        speaker: Speaker(
-            name: 'Tom Claes', jobTitle: 'Lead Engineer', company: 'Cegeka'),
-        meetupId: 'meetup-3',
-        meetupTitle: 'Flutter Belgium #3',
-        youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        thumbnailUrl: '/assets/talk/flutter_belgium_talk.jpeg'),
-    const Talk(
-        id: 'talk-4',
-        title: 'Custom Painters Deep Dive',
-        speaker: Speaker(name: 'An Willems', company: 'Freelance'),
-        meetupId: 'meetup-3',
-        meetupTitle: 'Flutter Belgium #3',
-        thumbnailUrl: '/assets/talk/flutter_belgium_talk.jpeg'),
+  static const List<Talk> _talks = [
+    Talk(youtubeUrl: 'https://www.youtube.com/watch?v=1bM6JiwLMX0'),
+    Talk(youtubeUrl: 'https://www.youtube.com/watch?v=iQQhv72eYRA'),
+    Talk(youtubeUrl: 'https://www.youtube.com/watch?v=J08BJIVDucI'),
   ];
 
   static const List<Company> _companies = [
@@ -146,20 +114,21 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
       date: DateTime(2024, 9, 19),
       hostCompany: 'Cronos',
       location: 'Leuven',
-      thumbnailUrl: '/assets/meetup/flutter-belgium-meetup.avif',
+      thumbnailUrl: '/assets/meetup/meetup_27.avif',
       meetupUrl: 'https://www.meetup.com/flutter-belgium/events/314638952');
 
   @override
-  Future<List<Meetup>> getPastMeetups() async =>
-      List.unmodifiable(_pastMeetups);
+  Future<List<Meetup>> getPastMeetups() async {
+    final sorted = [..._pastMeetups]..sort((a, b) => b.date.compareTo(a.date));
+    return List.unmodifiable(sorted);
+  }
 
   @override
   Future<List<Talk>> getAllTalks() async => List.unmodifiable(_talks);
 
   @override
   Future<CommunityLinks> getCommunityLinks() async => const CommunityLinks(
-        slackInviteUrl:
-            'https://join.slack.com/t/flutter-belgium/shared_invite/zt-2w7m73ron-5NZWiebmvxXAzBairbAisw',
+        slackInviteUrl: 'https://join.slack.com/t/flutter-belgium/shared_invite/zt-2w7m73ron-5NZWiebmvxXAzBairbAisw',
         youtubeChannelUrl: 'https://www.youtube.com/@flutter-belgium',
         meetupUrl: 'https://www.meetup.com/flutter-belgium/',
         linkedinUrl: 'https://www.linkedin.com/company/flutter-belgium/',
@@ -168,16 +137,13 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
       );
 
   @override
-  Future<List<Company>> getHostingCompanies() async =>
-      List.unmodifiable(_companies);
+  Future<List<Company>> getHostingCompanies() async => List.unmodifiable(_companies);
 
   @override
-  Future<List<Testimonial>> getTestimonials() async =>
-      List.unmodifiable(_testimonials);
+  Future<List<Testimonial>> getTestimonials() async => List.unmodifiable(_testimonials);
 
   @override
-  Future<List<TeamMember>> getTeamMembers() async =>
-      List.unmodifiable(_teamMembers);
+  Future<List<TeamMember>> getTeamMembers() async => List.unmodifiable(_teamMembers);
 
   @override
   Future<List<Sponsor>> getSponsors() async => List.unmodifiable(_sponsors);

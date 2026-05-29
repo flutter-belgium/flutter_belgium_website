@@ -20,7 +20,7 @@ class NavBar extends StatelessComponent {
         a(
           [
             img(
-                src: '/assets/logo-default.svg',
+                src: '/assets/logo-horizontal.svg',
                 alt: 'Flutter Belgium',
                 classes: 'navbar-logo-img')
           ],
