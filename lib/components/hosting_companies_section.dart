@@ -1,7 +1,8 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
 
-import '../data/models/company.dart';
+import 'package:flutter_belgium_website/data/models/company.dart';
+import 'package:flutter_belgium_website/util/shuffle_utils.dart';
 
 class HostingCompaniesSection extends StatelessComponent {
   const HostingCompaniesSection({required this.companies, super.key});
@@ -10,9 +11,8 @@ class HostingCompaniesSection extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    // Each row uses all companies so both rows are always populated.
-    final track1 = [for (var i = 0; i < 20; i++) ...companies];
-    final track2 = [for (var i = 0; i < 20; i++) ...companies];
+    final shuffled = shuffleNoAdjacentDuplicates(companies, (c) => c.name);
+    final track = [for (var i = 0; i < 20; i++) ...shuffled];
 
     return section(classes: 'hosting-companies', [
       div(classes: 'hosting-companies-header container', [
@@ -25,12 +25,7 @@ class HostingCompaniesSection extends StatelessComponent {
         div(classes: 'companies-fade', [
           div(classes: 'companies-row', [
             div(classes: 'companies-track companies-track-left', [
-              for (final company in track1) _logoItem(company),
-            ]),
-          ]),
-          div(classes: 'companies-row', [
-            div(classes: 'companies-track companies-track-right', [
-              for (final company in track2) _logoItem(company),
+              for (final company in track) _logoItem(company),
             ]),
           ]),
         ]),

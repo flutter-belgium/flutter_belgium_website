@@ -18,3 +18,6 @@ lib/*.options.dart
 
 # Docs
 .superpowers
+
+# Made in Flutter Belgium (populated by CI, not committed)
+web/assets/made_in/

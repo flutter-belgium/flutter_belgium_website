@@ -1,7 +1,7 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
 
-import '../data/models/sponsor.dart';
+import 'package:flutter_belgium_website/data/models/sponsor.dart';
 
 class SponsorSection extends StatelessComponent {
   const SponsorSection(
@@ -43,10 +43,8 @@ class _BecomeSponsorCard extends StatelessComponent {
             classes: 'become-sponsor-label',
             [Component.text('Become a sponsor')]),
       ],
-      href: contactUrl,
+      href: '/become-a-sponsor',
       classes: 'sponsor-card sponsor-card-cta',
-      target: Target.blank,
-      attributes: {'rel': 'noopener noreferrer'},
     );
   }
 }

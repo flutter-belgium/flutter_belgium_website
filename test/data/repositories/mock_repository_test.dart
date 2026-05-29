@@ -33,7 +33,7 @@ void main() {
     }
   });
 
-  test('getCommunityLinks returns https URLs for all links', () async {
+  test('getCommunityLinks returns valid URLs for all links', () async {
     final links = await repo.getCommunityLinks();
     expect(links, isA<CommunityLinks>());
     expect(links.slackInviteUrl, startsWith('https://'));
@@ -41,7 +41,7 @@ void main() {
     expect(links.meetupUrl, startsWith('https://'));
     expect(links.linkedinUrl, startsWith('https://'));
     expect(links.githubUrl, startsWith('https://'));
-    expect(links.madeInUrl, startsWith('https://'));
+    expect(links.madeInUrl, isNotEmpty);
   });
 
   test('getHostingCompanies returns companies with non-empty fields', () async {

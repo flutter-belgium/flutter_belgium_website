@@ -1,7 +1,7 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
 
-import '../data/models/community_links.dart';
+import 'package:flutter_belgium_website/data/models/community_links.dart';
 
 class JoinSection extends StatelessComponent {
   const JoinSection({required this.communityLinks, super.key});

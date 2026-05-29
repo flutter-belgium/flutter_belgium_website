@@ -1,7 +1,7 @@
 import 'package:jaspr/jaspr.dart';
 
-import '../data/models/community_links.dart';
-import 'legal_page.dart';
+import 'package:flutter_belgium_website/data/models/community_links.dart';
+import 'package:flutter_belgium_website/pages/legal_page.dart';
 
 class TermsPage extends StatelessComponent {
   const TermsPage({required this.communityLinks, super.key});
@@ -49,9 +49,22 @@ class TermsPage extends StatelessComponent {
           ],
         ),
         LegalSection(
+          heading: 'Intellectual property',
+          paragraphs: [
+            'Content, design, and trademarks published by Flutter Belgium are protected by intellectual property laws. You may not reproduce or distribute them without express written consent.',
+            'Users retain ownership of any content they submit to community spaces but grant Flutter Belgium a worldwide, non-exclusive, royalty-free licence to display and distribute that content for community purposes.',
+          ],
+        ),
+        LegalSection(
           heading: 'Disclaimer',
           paragraphs: [
-            'This website is provided "as is" without warranties of any kind. Flutter Belgium does not guarantee the accuracy or completeness of information on this website and accepts no liability for any loss or damage resulting from its use.',
+            'This website and the Flutter Belgium app are provided "as is" without warranties of any kind. Flutter Belgium does not guarantee the accuracy or completeness of any information and accepts no liability for any direct, indirect, incidental, or consequential damages resulting from use of our services.',
+          ],
+        ),
+        LegalSection(
+          heading: 'Termination',
+          paragraphs: [
+            'Flutter Belgium reserves the right to terminate or suspend access to any community space or service at any time, for any reason, without notice.',
           ],
         ),
         LegalSection(

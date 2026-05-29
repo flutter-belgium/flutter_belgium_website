@@ -1,7 +1,7 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
 
-import '../data/models/talk.dart';
+import 'package:flutter_belgium_website/data/models/talk.dart';
 
 class TalksSection extends StatelessComponent {
   const TalksSection({required this.talks, super.key});
@@ -42,6 +42,7 @@ class _TalkCard extends StatelessComponent {
         ]),
       ],
       href: talk.youtubeUrl,
+      classes: 'talk-link',
       target: Target.blank,
       attributes: {'rel': 'noopener noreferrer'},
     );

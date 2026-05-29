@@ -1,7 +1,7 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
 
-import '../data/models/community_links.dart';
+import 'package:flutter_belgium_website/data/models/community_links.dart';
 
 class NavBar extends StatelessComponent {
   const NavBar({required this.communityLinks, super.key});
@@ -32,12 +32,34 @@ class NavBar extends StatelessComponent {
           a([Component.text('Meetups')],
               href: '#meetups', classes: 'navbar-link'),
           a([Component.text('Talks')], href: '#talks', classes: 'navbar-link'),
-          a([Component.text('Join')], href: '#join', classes: 'navbar-link'),
+          div(classes: 'navbar-dropdown', [
+            a(
+              [Component.text('Made in (Flutter) Belgium')],
+              href: '/made-in-flutter-belgium/apps',
+              classes: 'navbar-link',
+            ),
+            div(classes: 'navbar-dropdown-menu', [
+              a(
+                [Component.text('apps')],
+                href: '/made-in-flutter-belgium/apps',
+                classes: 'navbar-dropdown-item',
+              ),
+              a(
+                [Component.text('companies')],
+                href: '/made-in-flutter-belgium/companies',
+                classes: 'navbar-dropdown-item',
+              ),
+              a(
+                [Component.text('developers')],
+                href: '/made-in-flutter-belgium/developers',
+                classes: 'navbar-dropdown-item',
+              ),
+            ]),
+          ]),
           a(
-            [Component.text('Join Slack')],
-            href: communityLinks.slackInviteUrl,
+            [Component.text('Join Flutter Belgium')],
+            href: '/#join',
             classes: 'navbar-cta',
-            attributes: {'target': '_blank', 'rel': 'noopener noreferrer'},
           ),
         ]),
         label(
@@ -54,13 +76,28 @@ class NavBar extends StatelessComponent {
             href: '#meetups', classes: 'navbar-mobile-link'),
         a([Component.text('Talks')],
             href: '#talks', classes: 'navbar-mobile-link'),
-        a([Component.text('Join')],
-            href: '#join', classes: 'navbar-mobile-link'),
+        span(
+            classes: 'navbar-mobile-section',
+            [const Component.text('Made in')]),
         a(
-          [Component.text('Join Slack')],
-          href: communityLinks.slackInviteUrl,
+          [Component.text('apps')],
+          href: '/made-in-flutter-belgium/apps',
+          classes: 'navbar-mobile-link navbar-mobile-sublink',
+        ),
+        a(
+          [Component.text('companies')],
+          href: '/made-in-flutter-belgium/companies',
+          classes: 'navbar-mobile-link navbar-mobile-sublink',
+        ),
+        a(
+          [Component.text('developers')],
+          href: '/made-in-flutter-belgium/developers',
+          classes: 'navbar-mobile-link navbar-mobile-sublink',
+        ),
+        a(
+          [Component.text('Join Flutter Belgium')],
+          href: '/#join',
           classes: 'navbar-mobile-cta',
-          attributes: {'target': '_blank', 'rel': 'noopener noreferrer'},
         ),
       ]),
     ]);
