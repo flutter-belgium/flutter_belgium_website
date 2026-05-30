@@ -88,6 +88,17 @@ void main() async {
       ),
       link(rel: 'stylesheet', href: 'styles.css'),
       link(rel: 'icon', type: 'image/svg+xml', href: 'assets/logo-mark.svg'),
+      script(
+        defer: true,
+        content: """
+          document.addEventListener('click', function(e) {
+            if (e.target.closest('.navbar-mobile-link,.navbar-mobile-cta')) {
+              var t = document.getElementById('nav-mobile-toggle');
+              if (t) t.checked = false;
+            }
+          });
+        """,
+      ),
     ],
     body: Router(routes: [
       Route(
