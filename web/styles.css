@@ -8,7 +8,7 @@
   --color-white: #FFFFFF;
   --font-family: 'Google Sans Flex', 'DM Sans', sans-serif;
   --container-max: 1200px;
-  --section-padding: 7rem 1.5rem;
+  --section-padding: 7rem 0;
 }
 
 /* ── Reset ─────────────────────────────────────────────────────── */
@@ -61,9 +61,28 @@ body {
 .btn-outline-white { background: transparent; color: var(--color-white); border: 2px solid var(--color-white); }
 .btn-icon { width: 18px; height: 18px; flex-shrink: 0; filter: brightness(0) invert(1); }
 
+/* ── View-all links ────────────────────────────────────────────── */
+.view-all-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: var(--color-sky);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.view-all-link:hover {
+  opacity: 0.75;
+}
+
+.view-all-link-light {
+  color: var(--color-white);
+}
+
 /* ── Hero ──────────────────────────────────────────────────────── */
-.hero { background: var(--color-white); padding: 12rem 1.5rem; }
-.hero-inner { max-width: var(--container-max); margin: 0 auto; display: flex; flex-direction: row; align-items: center; gap: 4rem; }
+.hero { background: var(--color-white); padding: 12rem 0; }
+.hero-inner { display: flex; flex-direction: row; align-items: center; gap: 4rem; }
 .hero-content { flex: 1.2; display: flex; flex-direction: column; gap: 2rem; align-items: flex-start; }
 .hero-logomark { flex: 0.8; display: flex; justify-content: center; align-items: center; }
 .hero-logomark img { height: 200px; width: auto; }
@@ -76,20 +95,22 @@ body {
 .hero-social-icon { width: 22px; height: 22px; filter: brightness(0) saturate(100%) invert(11%) sepia(76%) saturate(612%) hue-rotate(182deg) brightness(71%); }
 
 /* ── About ─────────────────────────────────────────────────────── */
-.about { background: var(--color-grey); padding: 7rem 1.5rem 1rem; }
-.about-inner { max-width: var(--container-max); margin: 0 auto; padding-bottom: 2.5rem; }
+.about { background: var(--color-grey); padding: 7rem 0 1rem; }
+.about-inner { padding-bottom: 2.5rem; }
 .about-made-in-text { margin-top: 1.25rem; }
 .about-apps-cta { margin-top: 2rem; }
-.app-showcase-strip { margin: 0 -1.5rem; padding: 2rem 0; overflow: hidden; }
+.app-showcase-strip { margin: 0; padding: 2rem 0; overflow: hidden; }
 .section-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-sky); margin-bottom: 1rem; }
 .section-title { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; line-height: 1.2; margin-bottom: 1.25rem; }
+.section-header-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 2.5rem; }
+.section-header-row .section-title { margin-bottom: 0; }
 .section-body { font-size: 1.125rem; line-height: 1.75; max-width: 680px; opacity: 0.8; }
 
 /* ── Next Meetup ───────────────────────────────────────────────── */
 .next-meetup { background: var(--color-navy); color: var(--color-white); padding: var(--section-padding); }
 .next-meetup .section-label { color: var(--color-yellow); }
 .next-meetup .section-title { color: var(--color-white); }
-.next-meetup-inner { max-width: var(--container-max); margin: 0 auto; }
+.next-meetup-inner { }
 .next-meetup-thumbnail { width: 100%; border-radius: 12px; margin: 2rem 0; aspect-ratio: 16/9; object-fit: cover; display: block; }
 .meetup-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 2rem 0; }
 .meetup-meta-item { display: flex; flex-direction: column; gap: 0.25rem; }
@@ -99,9 +120,11 @@ body {
 
 /* ── Past Meetups ──────────────────────────────────────────────── */
 .past-meetups { background: var(--color-grey); padding: var(--section-padding); }
-.past-meetups-inner { max-width: var(--container-max); margin: 0 auto; }
-.meetups-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
-.meetup-card { display: block; background: var(--color-white); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 16px rgba(2, 31, 64, 0.08); transition: transform 0.2s, box-shadow 0.2s; color: inherit; text-decoration: none; }
+.past-meetups-inner { }
+.meetups-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+.meetups-grid-centered { justify-items: center; }
+.meetups-grid-centered .meetup-card { max-width: 380px; width: 100%; }
+.meetup-card { display: block; background: var(--color-white); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 16px rgba(2, 31, 64, 0.08); transition: transform 0.2s, box-shadow 0.2s; color: var(--color-navy); text-decoration: none; }
 .meetup-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(2, 31, 64, 0.13); }
 .meetup-card-thumbnail { width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; display: block; }
 .meetup-card-body { padding: 1.25rem; }
@@ -114,7 +137,7 @@ body {
 
 /* ── Talks ─────────────────────────────────────────────────────── */
 .talks { background: var(--color-white); padding: var(--section-padding); }
-.talks-inner { max-width: var(--container-max); margin: 0 auto; }
+.talks-inner { }
 .talks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
 .talk-link { display: block; border-radius: 12px; box-shadow: 0 2px 16px rgba(2, 31, 64, 0.12); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; }
 .talk-link:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(2, 31, 64, 0.18); }
@@ -123,14 +146,14 @@ body {
 
 /* ── Join ──────────────────────────────────────────────────────── */
 .join { background: var(--color-sky); color: var(--color-white); padding: var(--section-padding); text-align: center; }
-.join-inner { max-width: 640px; margin: 0 auto; }
+.join-inner { max-width: 640px; }
 .join .section-title { color: var(--color-white); }
 .join-sub { font-size: 1.125rem; opacity: 0.85; margin: 1rem 0 2.5rem; }
 .join-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
 
 /* ── Footer ────────────────────────────────────────────────────── */
-.footer { background: var(--color-navy); color: var(--color-white); padding: 3rem 1.5rem; }
-.footer-inner { max-width: var(--container-max); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+.footer { background: var(--color-navy); color: var(--color-white); padding: 3rem 0; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
 .footer-logo { height: 48px; width: auto; }
 .footer-social { display: flex; flex-wrap: wrap; gap: 1.25rem; }
 .footer-social-link { font-size: 0.85rem; opacity: 0.6; transition: opacity 0.2s; }
@@ -142,15 +165,15 @@ body {
 .footer-legal-link:hover { opacity: 1; }
 
 /* ── Legal pages ────────────────────────────────────────────────── */
-.legal { background: var(--color-white); padding: 5rem 1.5rem 7rem; }
-.legal-inner { max-width: 720px; margin: 0 auto; }
+.legal { background: var(--color-white); padding: 5rem 0 7rem; }
+.legal-inner { max-width: 720px; }
 .legal-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: var(--color-navy); margin-bottom: 3rem; }
 .legal-section-title { font-size: 1.2rem; font-weight: 700; color: var(--color-navy); margin: 2.5rem 0 0.75rem; }
 .legal-body { font-size: 1rem; line-height: 1.75; opacity: 0.75; margin-bottom: 0.75rem; }
 
 /* ── Hosting Companies ─────────────────────────────────────────── */
 .hosting-companies { background: var(--color-white); padding-top: 7rem; padding-bottom: 7rem; }
-.hosting-companies-header { max-width: var(--container-max); margin: 0 auto; padding: 0 1.5rem; }
+.hosting-companies-header { }
 .companies-carousel { margin-top: 2.5rem; }
 .companies-fade { overflow: hidden; }
 .companies-row { display: flex; overflow: hidden; }
@@ -165,9 +188,9 @@ body {
 
 /* ── Testimonials ───────────────────────────────────────────────── */
 .testimonials { background: var(--color-grey); padding: var(--section-padding); }
-.testimonials-header { max-width: var(--container-max); margin: 0 auto; margin-bottom: 2.5rem; }
+.testimonials-header { margin-bottom: 2.5rem; }
 .testimonials-header-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-.testimonials-rows { display: flex; flex-direction: column; gap: 1.5rem; overflow: hidden; padding: 16px 0; margin: 0 -1.5rem; }
+.testimonials-rows { display: flex; flex-direction: column; gap: 1.5rem; overflow: hidden; padding: 16px 0; margin: 0; }
 .testimonials-row { display: flex; padding: 4px 0; }
 .testimonial-track-h { display: flex; gap: 1.5rem; }
 .testimonial-track-h-left { animation: scroll-left var(--duration, 500s) linear infinite; }
@@ -196,7 +219,7 @@ body {
 
 /* ── Team ──────────────────────────────────────────────────────── */
 .team { background: var(--color-white); padding: var(--section-padding); }
-.team-inner { max-width: var(--container-max); margin: 0 auto; }
+.team-inner { }
 .team-grid { display: flex; flex-wrap: wrap; gap: 3rem; margin-top: 3rem; }
 .team-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.5rem; flex: 1; min-width: 200px; }
 .team-avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin-bottom: 0.5rem; }
@@ -209,7 +232,7 @@ body {
 
 /* ── Sponsors ───────────────────────────────────────────────────── */
 .sponsors { background: var(--color-grey); padding: var(--section-padding); }
-.sponsors-inner { max-width: var(--container-max); margin: 0 auto; }
+.sponsors-inner { }
 .sponsors-sub { margin-bottom: 3rem; }
 .sponsors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
 .sponsor-card { display: flex; align-items: center; justify-content: center; aspect-ratio: 2 / 1; background: var(--color-white); border-radius: 16px; padding: 2rem 2.5rem; box-shadow: 0 2px 16px rgba(2, 31, 64, 0.08); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; color: inherit; }
@@ -224,8 +247,8 @@ body {
 .sponsor-card-cta:hover .become-sponsor-label { color: var(--color-sky); opacity: 1; }
 
 /* ── Branding page ─────────────────────────────────────────────── */
-.branding { background: var(--color-white); padding: 5rem 1.5rem 7rem; }
-.branding-inner { max-width: var(--container-max); margin: 0 auto; }
+.branding { background: var(--color-white); padding: 5rem 0 7rem; }
+.branding-inner { }
 .branding-header { margin-bottom: 4rem; }
 .branding-section-title { font-size: 1.1rem; font-weight: 700; color: var(--color-navy); margin: 3rem 0 1.25rem; letter-spacing: 0.01em; }
 .branding-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
@@ -261,7 +284,7 @@ body {
   .nav-mobile-toggle-input:checked ~ .navbar-inner .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .nav-mobile-toggle-input:checked ~ .navbar-inner .nav-hamburger span:nth-child(2) { opacity: 0; }
   .nav-mobile-toggle-input:checked ~ .navbar-inner .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-  .hero { padding: 4rem 1.25rem; }
+  .hero { padding: 4rem 0; }
   .hero-inner { flex-direction: column; }
   .hero-logomark { display: none; }
   .meetups-grid, .talks-grid { grid-template-columns: 1fr; }
@@ -270,17 +293,23 @@ body {
   .testimonials-column:nth-child(3) { display: none; }
 }
 
-/* ── Made in Flutter Belgium ───────────────────────────────────── */
-.made-in-page { background: var(--color-white); padding: 10rem 1.5rem 7rem; }
-.made-in-page-inner { max-width: var(--container-max); margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
-.made-in-hero-tagline { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: var(--color-navy); line-height: 1.2; }
-.made-in-hero-sub { font-size: 1.125rem; color: var(--color-navy); opacity: 0.75; max-width: 520px; }
-.made-in-tabs { margin-bottom: 2rem; }
+/* ── List page shell (Made in Flutter Belgium, Meetups, Talks, etc.) ── */
+.list-page { background: var(--color-white); padding: 10rem 0 7rem; }
+.list-page-inner { display: flex; flex-direction: column; gap: 2rem; }
+.list-page-tagline { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: var(--color-navy); line-height: 1.2; }
+.list-page-sub { font-size: 1.125rem; color: var(--color-navy); opacity: 0.75; max-width: 520px; }
+.page-tabs { margin-bottom: 2rem; }
 
-.made-in-content { display: contents; }
+.list-page-content { display: contents; }
+
+.meetups-section { display: flex; flex-direction: column; gap: 1.5rem; }
+.meetups-section-title { font-size: 1.5rem; font-weight: 700; color: var(--color-navy); }
 
 .made-in-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 2.5rem; margin-top: 2rem; padding-bottom: 2rem; }
 .made-in-grid-logos { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.made-in-grid-logos-sm { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.made-in-grid-logos-sm .made-in-card-logo { padding: 0.75rem 1.5rem; }
+.made-in-grid-logos-sm .made-in-card-logo-img { height: 40px; }
 
 .made-in-card { position: relative; display: block; width: 100%; text-decoration: none; color: var(--color-navy); transition: transform 0.2s; }
 .made-in-card:hover { transform: translateY(-4px); }
@@ -305,7 +334,7 @@ body {
 
 /* Detail pages */
 .made-in-detail { background: var(--color-white); padding: var(--section-padding); }
-.made-in-detail-inner { max-width: 800px; margin: 0 auto; }
+.made-in-detail-inner { }
 .made-in-detail-header { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
 .made-in-detail-icon { width: 96px; height: 96px; border-radius: 20px; object-fit: cover; flex-shrink: 0; }
 .made-in-detail-logo { max-height: 64px; max-width: 200px; object-fit: contain; flex-shrink: 0; }
@@ -331,6 +360,81 @@ body {
 .app-showcase-icon { width: 80px; height: 80px; border-radius: 18px; object-fit: cover; box-shadow: 0 2px 8px rgba(2,31,64,0.12); display: block; }
 .app-showcase-label { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(-4px); margin-top: 0.5rem; font-size: 0.7rem; font-weight: 600; color: var(--color-navy); text-align: center; white-space: nowrap; opacity: 0; transition: opacity 0.2s, transform 0.2s; pointer-events: none; }
 .app-showcase-item:hover .app-showcase-label { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── Meetup detail talk cards ──────────────────────────────── */
+.meetup-detail-talk-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.talk-thumbnail-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--color-grey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--color-navy);
+  opacity: 0.5;
+  border-radius: 8px 8px 0 0;
+}
+
+.meetup-talk-info {
+  padding: 0.6rem 0.75rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.meetup-talk-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--color-navy);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.meetup-talk-speaker {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.meetup-talk-speaker-avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.meetup-talk-speaker-name {
+  font-size: 0.72rem;
+  color: var(--color-navy);
+  opacity: 0.65;
+  margin: 0;
+}
+
+/* ── Meetup detail two-column layout ───────────────────────── */
+.meetup-detail-page { background: var(--color-white); padding: var(--section-padding); }
+.meetup-detail-page-inner { display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: start; }
+.meetup-detail-content { display: flex; flex-direction: column; gap: 1.5rem; }
+.meetup-detail-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: var(--color-navy); line-height: 1.15; }
+.meetup-detail-host { font-size: 1rem; color: var(--color-navy); opacity: 0.65; }
+.meetup-detail-description { font-size: 1rem; color: var(--color-navy); opacity: 0.8; line-height: 1.7; white-space: pre-line; }
+.meetup-detail-sidebar { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; top: 5rem; }
+.meetup-detail-thumbnail { width: 100%; border-radius: 12px; aspect-ratio: 16/9; object-fit: cover; display: block; }
+.meetup-detail-info-card { background: var(--color-white); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; box-shadow: 0 2px 16px rgba(2, 31, 64, 0.08); }
+.meetup-detail-info-row { display: flex; align-items: flex-start; gap: 0.75rem; }
+.meetup-detail-info-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+.meetup-detail-info-text { font-size: 0.95rem; color: var(--color-navy); line-height: 1.4; }
+.meetup-detail-signup { display: block; width: 100%; text-align: center; margin-top: 0.25rem; box-sizing: border-box; }
+
+@media (max-width: 768px) {
+  .meetup-detail-page-inner { grid-template-columns: 1fr; }
+  .meetup-detail-sidebar { position: static; }
+}
 
 /* Badges */
 .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; background: var(--color-sky); color: var(--color-white); margin-left: 0.5rem; vertical-align: middle; }

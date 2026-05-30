@@ -1,6 +1,7 @@
 import 'package:flutter_belgium_website/data/models/community_links.dart';
 import 'package:flutter_belgium_website/data/models/company.dart';
 import 'package:flutter_belgium_website/data/models/meetup.dart';
+import 'package:flutter_belgium_website/data/models/person.dart';
 import 'package:flutter_belgium_website/data/models/talk.dart';
 import 'package:flutter_belgium_website/data/models/testimonial.dart';
 import 'package:flutter_belgium_website/data/repositories/mock_flutter_belgium_repository.dart';
@@ -24,12 +25,13 @@ void main() {
     expect(meetups, isNotEmpty);
   });
 
-  test('getAllTalks returns talks with a youtubeUrl', () async {
+  test('getAllTalks returns talks with non-empty id and title', () async {
     final talks = await repo.getAllTalks();
     expect(talks, isA<List<Talk>>());
     expect(talks, isNotEmpty);
     for (final talk in talks) {
-      expect(talk.youtubeUrl, startsWith('https://'));
+      expect(talk.id, isNotEmpty);
+      expect(talk.title, isNotEmpty);
     }
   });
 
@@ -62,8 +64,8 @@ void main() {
     expect(testimonials, hasLength(3));
     for (final t in testimonials) {
       expect(t.text, isNotEmpty);
-      expect(t.authorName, isNotEmpty);
-      expect(t.authorRole, isNotEmpty);
+      expect(t.author.name, isNotEmpty);
+      expect(t.author.activeCompany, isNotNull);
     }
   });
 
@@ -83,6 +85,47 @@ void main() {
     for (final s in sponsors) {
       expect(s.name, isNotEmpty);
       expect(s.websiteUrl, startsWith('https://'));
+    }
+  });
+
+  test('getUpcomingMeetups returns meetups sorted ascending by date', () async {
+    final meetups = await repo.getUpcomingMeetups();
+    expect(meetups, isA<List<Meetup>>());
+    for (var i = 0; i < meetups.length - 1; i++) {
+      expect(meetups[i].date.isBefore(meetups[i + 1].date), isTrue);
+    }
+  });
+
+  test('getPersons returns persons with non-empty id and name', () async {
+    final persons = await repo.getPersons();
+    expect(persons, isA<List<Person>>());
+    expect(persons, isNotEmpty);
+    for (final p in persons) {
+      expect(p.id, isNotEmpty);
+      expect(p.name, isNotEmpty);
+    }
+  });
+
+  test('getMeetupBySlug returns the correct meetup', () async {
+    final meetup = await repo.getMeetupBySlug('flutter-belgium-26');
+    expect(meetup, isNotNull);
+    expect(meetup!.id, 'meetup-3');
+  });
+
+  test('getMeetupBySlug returns null for unknown slug', () async {
+    final meetup = await repo.getMeetupBySlug('does-not-exist');
+    expect(meetup, isNull);
+  });
+
+  test('getPastMeetups returns meetups with embedded talks', () async {
+    final meetups = await repo.getPastMeetups();
+    final meetupsWithTalks = meetups.where((m) => m.talks.isNotEmpty).toList();
+    expect(meetupsWithTalks, isNotEmpty);
+    for (final meetup in meetupsWithTalks) {
+      for (final talk in meetup.talks) {
+        expect(talk.id, isNotEmpty);
+        expect(talk.title, isNotEmpty);
+      }
     }
   });
 }

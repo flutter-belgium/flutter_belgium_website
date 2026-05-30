@@ -1,3 +1,5 @@
+export 'package:flutter_belgium_website/util/string_utils.dart' show toSlug;
+
 String toLocalImagePath(String url) {
   const apiBase = 'https://api.madein.flutterbelgium.be/';
   const githubBase = 'https://avatars.githubusercontent.com/';
@@ -11,11 +13,4 @@ String toLocalImagePath(String url) {
     return 'assets/made_in/developers/$username/avatar.jpg';
   }
   return url;
-}
-
-String toSlug(String name) {
-  return name
-      .toLowerCase()
-      .replaceAll(RegExp(r'[^a-z0-9\s]'), '')
-      .replaceAll(RegExp(r'\s+'), '-');
 }

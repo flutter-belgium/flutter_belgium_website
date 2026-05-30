@@ -23,7 +23,7 @@ import 'package:flutter_belgium_website/data/models/testimonial.dart';
 
 class HomePage extends StatelessComponent {
   const HomePage({
-    required this.nextMeetup,
+    required this.upcomingMeetups,
     required this.pastMeetups,
     required this.talks,
     required this.communityLinks,
@@ -35,7 +35,7 @@ class HomePage extends StatelessComponent {
     super.key,
   });
 
-  final Meetup? nextMeetup;
+  final List<Meetup> upcomingMeetups;
   final List<Meetup> pastMeetups;
   final List<Talk> talks;
   final CommunityLinks communityLinks;
@@ -52,10 +52,9 @@ class HomePage extends StatelessComponent {
       HeroSection(communityLinks: communityLinks),
       AboutSection(
           latestApps: latestMadeInApps, madeInUrl: communityLinks.madeInUrl),
-      NextMeetupSection(meetup: nextMeetup, communityLinks: communityLinks),
+      NextMeetupSection(meetups: upcomingMeetups),
       HostingCompaniesSection(companies: companies),
-      PastMeetupsSection(
-          meetups: pastMeetups, meetupGroupUrl: communityLinks.meetupUrl),
+      PastMeetupsSection(meetups: pastMeetups),
       TalksSection(talks: talks),
       SponsorSection(
           sponsors: sponsors, contactUrl: communityLinks.slackInviteUrl),

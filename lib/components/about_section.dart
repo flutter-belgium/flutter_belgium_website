@@ -17,7 +17,7 @@ class AboutSection extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     return section(id: 'about', classes: 'about', [
-      div(classes: 'about-inner', [
+      div(classes: 'about-inner container', [
         const p(classes: 'section-label', [Component.text('About us')]),
         const h2(
             classes: 'section-title',

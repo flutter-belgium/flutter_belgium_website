@@ -1,6 +1,7 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
 
+import 'package:flutter_belgium_website/components/talk_card.dart';
 import 'package:flutter_belgium_website/data/models/talk.dart';
 
 class TalksSection extends StatelessComponent {
@@ -10,41 +11,24 @@ class TalksSection extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
+    final withVideo = talks.where((t) => t.thumbnailUrl != null).toList();
     return section(id: 'talks', classes: 'talks', [
-      div(classes: 'talks-inner', [
+      div(classes: 'talks-inner container', [
         const p(classes: 'section-label', [Component.text('Talks')]),
-        const h2(
-            classes: 'section-title',
-            [Component.text('Catch up on what you missed')]),
+        div(classes: 'section-header-row', [
+          const h2(
+              classes: 'section-title',
+              [Component.text('Catch up on what you missed')]),
+          a(
+            [const Component.text('View all talks')],
+            href: '/talks',
+            classes: 'btn btn-secondary',
+          ),
+        ]),
         div(classes: 'talks-grid', [
-          for (final talk in talks) _TalkCard(talk: talk),
+          for (final talk in withVideo) TalkCard(talk: talk),
         ]),
       ]),
     ]);
-  }
-}
-
-class _TalkCard extends StatelessComponent {
-  const _TalkCard({required this.talk});
-
-  final Talk talk;
-
-  @override
-  Component build(BuildContext context) {
-    return a(
-      [
-        article(classes: 'talk-card', [
-          img(
-            src: talk.thumbnailUrl,
-            alt: 'Flutter Belgium talk',
-            classes: 'talk-thumbnail',
-          ),
-        ]),
-      ],
-      href: talk.youtubeUrl,
-      classes: 'talk-link',
-      target: Target.blank,
-      attributes: {'rel': 'noopener noreferrer'},
-    );
   }
 }

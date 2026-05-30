@@ -11,7 +11,6 @@ void main() {
         'description': 'A well-being app.',
         'releaseData': '2023-07-04T00:00:00.000',
         'isSunsetted': false,
-        'publisher': 'Bevoy',
         'developers': [
           {
             'githubUserName': 'tijlivens',
@@ -53,7 +52,6 @@ void main() {
       expect(app.description, 'A well-being app.');
       expect(app.releaseDate, DateTime(2023, 7, 4));
       expect(app.isSunsetted, false);
-      expect(app.publisher, 'Bevoy');
       expect(app.localIconPath, 'assets/made_in/projects/Bevoy/app_icon.webp');
       expect(app.localBannerPath, 'assets/made_in/projects/Bevoy/banner.webp');
       expect(app.screenshotPaths,
