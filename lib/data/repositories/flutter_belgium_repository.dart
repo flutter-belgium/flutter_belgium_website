@@ -1,10 +1,10 @@
-import '../models/community_links.dart';
-import '../models/company.dart';
-import '../models/meetup.dart';
-import '../models/sponsor.dart';
-import '../models/talk.dart';
-import '../models/team_member.dart';
-import '../models/testimonial.dart';
+import 'package:flutter_belgium_website/data/models/community_links.dart';
+import 'package:flutter_belgium_website/data/models/company.dart';
+import 'package:flutter_belgium_website/data/models/meetup.dart';
+import 'package:flutter_belgium_website/data/models/sponsor.dart';
+import 'package:flutter_belgium_website/data/models/talk.dart';
+import 'package:flutter_belgium_website/data/models/team_member.dart';
+import 'package:flutter_belgium_website/data/models/testimonial.dart';
 
 abstract class FlutterBelgiumRepository {
   Future<Meetup?> getNextMeetup();

@@ -19,9 +19,23 @@ fvm install
 # Install packages
 fvm dart pub get
 
+# Download Made in Flutter Belgium images (required before first run)
+tool/download_madein_assets.sh
+
 # Start dev server (hot reload at http://localhost:8080)
 fvm dart run jaspr_cli:jaspr serve
 ```
+
+> **Note:** The `download_madein_assets.sh` step fetches app icons, screenshots, company logos, and developer avatars from `api.madein.flutterbelgium.be` and saves them to `web/assets/made_in/`. These files are not committed to the repository. You need to re-run the script whenever the Made in Flutter Belgium data is updated.
+
+## Tool scripts
+
+| Script | Description |
+|---|---|
+| `tool/get_packages.sh` | Install Dart dependencies |
+| `tool/download_madein_assets.sh` | Download Made in Flutter Belgium images from the API |
+| `tool/serve.sh` | Start the local dev server |
+| `tool/format.sh` | Format Dart source files |
 
 ## Deployment
 

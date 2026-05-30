@@ -1,24 +1,25 @@
 import 'package:jaspr/jaspr.dart';
 
-import '../components/about_section.dart';
-import '../components/footer.dart';
-import '../components/hero_section.dart';
-import '../components/hosting_companies_section.dart';
-import '../components/join_section.dart';
-import '../components/nav_bar.dart';
-import '../components/next_meetup_section.dart';
-import '../components/past_meetups_section.dart';
-import '../components/sponsor_section.dart';
-import '../components/talks_section.dart';
-import '../components/team_section.dart';
-import '../components/testimonials_section.dart';
-import '../data/models/community_links.dart';
-import '../data/models/company.dart';
-import '../data/models/meetup.dart';
-import '../data/models/sponsor.dart';
-import '../data/models/talk.dart';
-import '../data/models/team_member.dart';
-import '../data/models/testimonial.dart';
+import 'package:flutter_belgium_website/components/about_section.dart';
+import 'package:flutter_belgium_website/components/footer.dart';
+import 'package:flutter_belgium_website/components/hero_section.dart';
+import 'package:flutter_belgium_website/components/hosting_companies_section.dart';
+import 'package:flutter_belgium_website/components/join_section.dart';
+import 'package:flutter_belgium_website/components/nav_bar.dart';
+import 'package:flutter_belgium_website/components/next_meetup_section.dart';
+import 'package:flutter_belgium_website/components/past_meetups_section.dart';
+import 'package:flutter_belgium_website/components/sponsor_section.dart';
+import 'package:flutter_belgium_website/components/talks_section.dart';
+import 'package:flutter_belgium_website/components/team_section.dart';
+import 'package:flutter_belgium_website/components/testimonials_section.dart';
+import 'package:flutter_belgium_website/data/models/community_links.dart';
+import 'package:flutter_belgium_website/data/models/company.dart';
+import 'package:flutter_belgium_website/data/models/made_in_flutter_belgium/made_in_app.dart';
+import 'package:flutter_belgium_website/data/models/meetup.dart';
+import 'package:flutter_belgium_website/data/models/sponsor.dart';
+import 'package:flutter_belgium_website/data/models/talk.dart';
+import 'package:flutter_belgium_website/data/models/team_member.dart';
+import 'package:flutter_belgium_website/data/models/testimonial.dart';
 
 class HomePage extends StatelessComponent {
   const HomePage({
@@ -30,6 +31,7 @@ class HomePage extends StatelessComponent {
     required this.testimonials,
     required this.members,
     required this.sponsors,
+    required this.latestMadeInApps,
     super.key,
   });
 
@@ -41,23 +43,25 @@ class HomePage extends StatelessComponent {
   final List<Testimonial> testimonials;
   final List<TeamMember> members;
   final List<Sponsor> sponsors;
+  final List<MadeInApp> latestMadeInApps;
 
   @override
   Component build(BuildContext context) {
     return Component.fragment([
       NavBar(communityLinks: communityLinks),
       HeroSection(communityLinks: communityLinks),
-      const AboutSection(),
-      TeamSection(members: members),
+      AboutSection(
+          latestApps: latestMadeInApps, madeInUrl: communityLinks.madeInUrl),
       NextMeetupSection(meetup: nextMeetup, communityLinks: communityLinks),
       HostingCompaniesSection(companies: companies),
       PastMeetupsSection(
           meetups: pastMeetups, meetupGroupUrl: communityLinks.meetupUrl),
       TalksSection(talks: talks),
-      TestimonialsSection(testimonials: testimonials),
-      JoinSection(communityLinks: communityLinks),
       SponsorSection(
           sponsors: sponsors, contactUrl: communityLinks.slackInviteUrl),
+      TeamSection(members: members),
+      TestimonialsSection(testimonials: testimonials),
+      JoinSection(communityLinks: communityLinks),
       Footer(communityLinks: communityLinks),
     ]);
   }

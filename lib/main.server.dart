@@ -2,12 +2,24 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/server.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
-import 'data/repositories/mock_flutter_belgium_repository.dart';
-import 'main.server.options.dart';
-import 'pages/branding_page.dart';
-import 'pages/home_page.dart';
-import 'pages/privacy_policy_page.dart';
-import 'pages/terms_page.dart';
+import 'package:flutter_belgium_website/data/repositories/http_made_in_flutter_belgium_repository.dart';
+import 'package:flutter_belgium_website/data/repositories/mock_flutter_belgium_repository.dart';
+import 'package:flutter_belgium_website/main.server.options.dart';
+import 'package:flutter_belgium_website/pages/branding_page.dart';
+import 'package:flutter_belgium_website/pages/home_page.dart';
+import 'package:flutter_belgium_website/pages/made_in_flutter_belgium/made_in_app_detail_page.dart';
+import 'package:flutter_belgium_website/pages/made_in_flutter_belgium/made_in_apps_page.dart';
+import 'package:flutter_belgium_website/pages/made_in_flutter_belgium/made_in_companies_page.dart';
+import 'package:flutter_belgium_website/pages/made_in_flutter_belgium/made_in_company_detail_page.dart';
+import 'package:flutter_belgium_website/pages/made_in_flutter_belgium/made_in_developer_detail_page.dart';
+import 'package:flutter_belgium_website/pages/made_in_flutter_belgium/made_in_developers_page.dart';
+import 'package:flutter_belgium_website/pages/app_page.dart';
+import 'package:flutter_belgium_website/pages/become_a_sponsor_page.dart';
+import 'package:flutter_belgium_website/pages/privacy_policy_page.dart';
+import 'package:flutter_belgium_website/pages/scan_page.dart';
+import 'package:flutter_belgium_website/pages/terms_page.dart';
+import 'package:flutter_belgium_website/util/made_in_utils.dart';
+import 'package:flutter_belgium_website/util/shuffle_utils.dart';
 
 // To switch to the real API package, replace MockFlutterBelgiumRepository
 // with ApiFlutterBelgiumRepository from the published Dart package,
@@ -22,9 +34,23 @@ void main() async {
   final talks = await repository.getAllTalks();
   final communityLinks = await repository.getCommunityLinks();
   final companies = await repository.getHostingCompanies();
-  final testimonials = await repository.getTestimonials();
+  final testimonials = shuffleNoAdjacentDuplicates(
+    await repository.getTestimonials(),
+    (t) => t.authorName,
+  );
   final teamMembers = await repository.getTeamMembers();
   final sponsors = await repository.getSponsors();
+
+  final madeInRepository = HttpMadeInFlutterBelgiumRepository();
+  final madeInApps = await madeInRepository.getApps();
+  final madeInCompanies = await madeInRepository.getCompanies();
+  final madeInDevelopers =
+      ([...await madeInRepository.getDevelopers()]..sort((dev1, dev2) {
+          final nameA = (dev1.name ?? dev1.githubUserName).toLowerCase();
+          final nameB = (dev2.name ?? dev2.githubUserName).toLowerCase();
+          return nameA.compareTo(nameB);
+        }));
+  final latestApps = shuffleNoAdjacentDuplicates(madeInApps, (app) => app.name);
 
   runApp(Document(
     title: 'Flutter Belgium',
@@ -51,6 +77,8 @@ void main() async {
       Route(
         path: '/',
         title: 'Flutter Belgium',
+        settings:
+            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 1.0),
         builder: (context, state) => HomePage(
           nextMeetup: nextMeetup,
           pastMeetups: pastMeetups,
@@ -60,6 +88,7 @@ void main() async {
           testimonials: testimonials,
           members: teamMembers,
           sponsors: sponsors,
+          latestMadeInApps: latestApps,
         ),
       ),
       Route(
@@ -79,6 +108,83 @@ void main() async {
         builder: (context, state) =>
             BrandingPage(communityLinks: communityLinks),
       ),
+      Route(
+        path: '/app',
+        title: 'Flutter Belgium App',
+        builder: (context, state) => AppPage(communityLinks: communityLinks),
+      ),
+      Route(
+        path: '/scan',
+        title: 'Flutter Belgium',
+        builder: (context, state) => ScanPage(communityLinks: communityLinks),
+      ),
+      Route(
+        path: '/become-a-sponsor',
+        title: 'Become a Sponsor | Flutter Belgium',
+        settings:
+            const RouteSettings(changeFreq: ChangeFreq.monthly, priority: 0.7),
+        builder: (context, state) =>
+            BecomeASponsorPage(communityLinks: communityLinks),
+      ),
+      Route(
+        path: '/made-in-flutter-belgium/apps',
+        title: 'Apps | Made in Flutter Belgium',
+        settings:
+            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
+        builder: (context, state) => MadeInAppsPage(
+          apps: madeInApps,
+          communityLinks: communityLinks,
+        ),
+      ),
+      Route(
+        path: '/made-in-flutter-belgium/companies',
+        title: 'Companies | Made in Flutter Belgium',
+        settings:
+            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
+        builder: (context, state) => MadeInCompaniesPage(
+          companies: madeInCompanies,
+          communityLinks: communityLinks,
+        ),
+      ),
+      Route(
+        path: '/made-in-flutter-belgium/developers',
+        title: 'Developers | Made in Flutter Belgium',
+        settings:
+            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
+        builder: (context, state) => MadeInDevelopersPage(
+          developers: madeInDevelopers,
+          communityLinks: communityLinks,
+        ),
+      ),
+      for (final app in madeInApps)
+        Route(
+          path: '/made-in-flutter-belgium/apps/${toSlug(app.name)}',
+          title: '${app.name} | Made in Flutter Belgium',
+          builder: (context, state) => MadeInAppDetailPage(
+            app: app,
+            communityLinks: communityLinks,
+          ),
+        ),
+      for (final company in madeInCompanies)
+        Route(
+          path: '/made-in-flutter-belgium/companies/${toSlug(company.name)}',
+          title: '${company.name} | Made in Flutter Belgium',
+          builder: (context, state) => MadeInCompanyDetailPage(
+            company: company,
+            communityLinks: communityLinks,
+          ),
+        ),
+      for (final developer in madeInDevelopers)
+        Route(
+          path:
+              '/made-in-flutter-belgium/developers/${toSlug(developer.githubUserName)}',
+          title:
+              '${developer.name ?? developer.githubUserName} | Made in Flutter Belgium',
+          builder: (context, state) => MadeInDeveloperDetailPage(
+            developer: developer,
+            communityLinks: communityLinks,
+          ),
+        ),
     ]),
   ));
 }

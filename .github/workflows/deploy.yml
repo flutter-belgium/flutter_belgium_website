@@ -65,8 +65,11 @@ jobs:
       - name: Install dependencies
         run: dart pub get
 
+      - name: Download Made in Flutter Belgium images
+        run: dart run .github/workflows/scripts/download_made_in_images.dart
+
       - name: Build static site
-        run: dart run jaspr_cli:jaspr build
+        run: dart run jaspr_cli:jaspr build --sitemap-domain https://flutterbelgium.be
 
       - name: Remove Dart build artifacts
         run: |

@@ -1,7 +1,7 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
 
-import '../data/models/meetup.dart';
+import 'package:flutter_belgium_website/data/models/meetup.dart';
 
 class PastMeetupsSection extends StatelessComponent {
   const PastMeetupsSection(

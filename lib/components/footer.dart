@@ -1,7 +1,7 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
 
-import '../data/models/community_links.dart';
+import 'package:flutter_belgium_website/data/models/community_links.dart';
 
 class Footer extends StatelessComponent {
   const Footer({required this.communityLinks, super.key});
@@ -57,14 +57,10 @@ class Footer extends StatelessComponent {
                 'rel': 'noopener noreferrer',
                 'aria-label': 'GitHub'
               }),
-          a([const Component.text('Made in Flutter Belgium')],
+          a([const Component.text('Made in (Flutter) Belgium')],
               href: communityLinks.madeInUrl,
               classes: 'footer-social-link',
-              attributes: {
-                'target': '_blank',
-                'rel': 'noopener noreferrer',
-                'aria-label': 'Made in Flutter Belgium'
-              }),
+              attributes: {'aria-label': 'Made in (Flutter) Belgium'}),
         ]),
         div(classes: 'footer-bottom', [
           p(classes: 'footer-copy', [

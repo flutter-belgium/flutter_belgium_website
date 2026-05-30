@@ -1,9 +1,9 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
 
-import '../components/footer.dart';
-import '../components/nav_bar.dart';
-import '../data/models/community_links.dart';
+import 'package:flutter_belgium_website/components/footer.dart';
+import 'package:flutter_belgium_website/components/nav_bar.dart';
+import 'package:flutter_belgium_website/data/models/community_links.dart';
 
 class BrandingPage extends StatelessComponent {
   const BrandingPage({required this.communityLinks, super.key});

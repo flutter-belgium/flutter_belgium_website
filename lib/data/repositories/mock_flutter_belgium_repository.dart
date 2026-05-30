@@ -1,11 +1,11 @@
-import '../models/community_links.dart';
-import '../models/company.dart';
-import '../models/meetup.dart';
-import '../models/sponsor.dart';
-import '../models/talk.dart';
-import '../models/team_member.dart';
-import '../models/testimonial.dart';
-import 'flutter_belgium_repository.dart';
+import 'package:flutter_belgium_website/data/models/community_links.dart';
+import 'package:flutter_belgium_website/data/models/company.dart';
+import 'package:flutter_belgium_website/data/models/meetup.dart';
+import 'package:flutter_belgium_website/data/models/sponsor.dart';
+import 'package:flutter_belgium_website/data/models/talk.dart';
+import 'package:flutter_belgium_website/data/models/team_member.dart';
+import 'package:flutter_belgium_website/data/models/testimonial.dart';
+import 'package:flutter_belgium_website/data/repositories/flutter_belgium_repository.dart';
 
 class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
   static final List<Meetup> _pastMeetups = [
@@ -43,9 +43,34 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
 
   static const List<Company> _companies = [
     Company(
-      name: 'Flutter Belgium',
-      logoUrl: '/assets/logo-default.svg',
-      websiteUrl: 'https://flutterbelgium.be',
+      name: 'In The Pocket',
+      logoUrl: '/assets/company/in_the_pocket.svg',
+      websiteUrl: 'https://www.inthepocket.com',
+    ),
+    Company(
+      name: 'Lemon',
+      logoUrl: '/assets/company/lemon.webp',
+      websiteUrl: 'https://lemon.be',
+    ),
+    Company(
+      name: 'Get Driven',
+      logoUrl: '/assets/company/get_driven.webp',
+      websiteUrl: 'https://getdriven.be',
+    ),
+    Company(
+      name: 'Aaltra',
+      logoUrl: '/assets/company/aaltra.webp',
+      websiteUrl: 'https://aaltra.com',
+    ),
+    Company(
+      name: 'Make it Fly',
+      logoUrl: '/assets/company/make_it_fly.svg',
+      websiteUrl: 'https://makeitfly.be',
+    ),
+    Company(
+      name: 'icapps',
+      logoUrl: '/assets/company/icapps.svg',
+      websiteUrl: 'https://icapps.com',
     ),
   ];
 
@@ -92,18 +117,21 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
           'Building Flutter Belgium has been one of the most rewarding things I have done as a developer. Seeing the community grow and watching people connect over a shared passion for Flutter makes every event worth it.',
       authorName: 'Koen Van Looveren',
       authorRole: 'Organiser at Flutter Belgium',
+      authorAvatarUrl: '/assets/team/koen.jpeg',
     ),
     Testimonial(
       text:
           'I joined as an organiser because I wanted to give back to the community that helped me grow as an engineer. Flutter Belgium is the place where Belgian Flutter developers come to learn and inspire each other.',
       authorName: 'Jens Gyselinck',
       authorRole: 'Organiser at Flutter Belgium',
+      authorAvatarUrl: '/assets/team/jens.jpeg',
     ),
     Testimonial(
       text:
           'What started as a small idea has grown into a thriving community of Flutter developers across Belgium. The conversations and connections that happen at every meetup continue to surprise and motivate me.',
       authorName: 'Kris Pypen',
       authorRole: 'Organiser at Flutter Belgium',
+      authorAvatarUrl: '/assets/team/kris.jpeg',
     ),
   ];
 
@@ -134,7 +162,7 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
         meetupUrl: 'https://www.meetup.com/flutter-belgium/',
         linkedinUrl: 'https://www.linkedin.com/company/flutter-belgium/',
         githubUrl: 'https://github.com/flutter-belgium',
-        madeInUrl: 'https://madein.flutterbelgium.be',
+        madeInUrl: '/made-in-flutter-belgium/apps',
       );
 
   @override
