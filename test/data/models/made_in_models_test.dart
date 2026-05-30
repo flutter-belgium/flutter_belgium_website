@@ -1,6 +1,4 @@
-import 'package:flutter_belgium_website/data/models/made_in_flutter_belgium/made_in_app.dart';
-import 'package:flutter_belgium_website/data/models/made_in_flutter_belgium/made_in_company.dart';
-import 'package:flutter_belgium_website/data/models/made_in_flutter_belgium/made_in_developer.dart';
+import 'package:flutter_belgium_data/flutter_belgium_data.dart';
 import 'package:test/test.dart';
 
 void main() {

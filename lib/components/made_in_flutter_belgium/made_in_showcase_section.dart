@@ -1,8 +1,7 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
 
-import 'package:flutter_belgium_website/data/models/made_in_flutter_belgium/made_in_app.dart';
-import 'package:flutter_belgium_website/util/made_in_utils.dart';
+import 'package:flutter_belgium_data/flutter_belgium_data.dart';
 
 class MadeInShowcaseSection extends StatelessComponent {
   const MadeInShowcaseSection({required this.latestApps, super.key});

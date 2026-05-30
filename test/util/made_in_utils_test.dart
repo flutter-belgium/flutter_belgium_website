@@ -1,4 +1,4 @@
-import 'package:flutter_belgium_website/util/made_in_utils.dart';
+import 'package:flutter_belgium_data/flutter_belgium_data.dart';
 import 'package:test/test.dart';
 
 void main() {

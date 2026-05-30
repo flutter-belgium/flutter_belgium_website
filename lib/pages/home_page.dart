@@ -14,7 +14,7 @@ import 'package:flutter_belgium_website/components/team_section.dart';
 import 'package:flutter_belgium_website/components/testimonials_section.dart';
 import 'package:flutter_belgium_website/data/models/community_links.dart';
 import 'package:flutter_belgium_website/data/models/company.dart';
-import 'package:flutter_belgium_website/data/models/made_in_flutter_belgium/made_in_app.dart';
+import 'package:flutter_belgium_data/flutter_belgium_data.dart';
 import 'package:flutter_belgium_website/data/models/meetup.dart';
 import 'package:flutter_belgium_website/data/models/sponsor.dart';
 import 'package:flutter_belgium_website/data/models/talk.dart';

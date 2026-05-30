@@ -5,8 +5,7 @@ import 'package:flutter_belgium_website/components/footer.dart';
 import 'package:flutter_belgium_website/components/made_in_flutter_belgium/made_in_card.dart';
 import 'package:flutter_belgium_website/components/nav_bar.dart';
 import 'package:flutter_belgium_website/data/models/community_links.dart';
-import 'package:flutter_belgium_website/data/models/made_in_flutter_belgium/made_in_developer.dart';
-import 'package:flutter_belgium_website/util/made_in_utils.dart';
+import 'package:flutter_belgium_data/flutter_belgium_data.dart';
 
 class MadeInDeveloperDetailPage extends StatelessComponent {
   const MadeInDeveloperDetailPage({

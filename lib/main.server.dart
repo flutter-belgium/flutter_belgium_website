@@ -2,7 +2,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/server.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
-import 'package:flutter_belgium_website/data/repositories/http_made_in_flutter_belgium_repository.dart';
+import 'package:flutter_belgium_data/flutter_belgium_data.dart';
 import 'package:flutter_belgium_website/data/repositories/mock_flutter_belgium_repository.dart';
 import 'package:flutter_belgium_website/main.server.options.dart';
 import 'package:flutter_belgium_website/pages/branding_page.dart';
@@ -21,7 +21,6 @@ import 'package:flutter_belgium_website/pages/become_a_sponsor_page.dart';
 import 'package:flutter_belgium_website/pages/privacy_policy_page.dart';
 import 'package:flutter_belgium_website/pages/scan_page.dart';
 import 'package:flutter_belgium_website/pages/terms_page.dart';
-import 'package:flutter_belgium_website/util/made_in_utils.dart';
 import 'package:flutter_belgium_website/util/shuffle_utils.dart';
 
 // To switch to the real API package, replace MockFlutterBelgiumRepository
@@ -33,28 +32,40 @@ void main() async {
   final repository = MockFlutterBelgiumRepository();
 
   final upcomingMeetups = await repository.getUpcomingMeetups();
+  print('[DATA] Upcoming meetups: ${upcomingMeetups.length}');
   final pastMeetups = await repository.getPastMeetups();
+  print('[DATA] Past meetups: ${pastMeetups.length}');
   final allMeetups = [...upcomingMeetups, ...pastMeetups];
+  print('[DATA] All meetups (combined): ${allMeetups.length}');
   final talks = await repository.getAllTalks();
+  print('[DATA] Talks: ${talks.length}');
   final communityLinks = await repository.getCommunityLinks();
+  print('[DATA] CommunityLinks loaded');
   final companies = await repository.getHostingCompanies();
+  print('[DATA] Companies: ${companies.length}');
   final testimonials = shuffleNoAdjacentDuplicates(
     await repository.getTestimonials(),
     (t) => t.author.name,
   );
+  print('[DATA] Testimonials: ${testimonials.length}');
   final teamMembers = await repository.getTeamMembers();
+  print('[DATA] Team members: ${teamMembers.length}');
   final sponsors = await repository.getSponsors();
+  print('[DATA] Sponsors: ${sponsors.length}');
 
-  final madeInRepository = HttpMadeInFlutterBelgiumRepository();
-  final madeInApps = await madeInRepository.getApps();
-  final madeInCompanies = await madeInRepository.getCompanies();
-  final madeInDevelopers =
-      ([...await madeInRepository.getDevelopers()]..sort((dev1, dev2) {
-          final nameA = (dev1.name ?? dev1.githubUserName).toLowerCase();
-          final nameB = (dev2.name ?? dev2.githubUserName).toLowerCase();
-          return nameA.compareTo(nameB);
-        }));
+  final flutterBelgiumData = FlutterBelgiumData();
+  final madeInApps = await flutterBelgiumData.getMadeInApps();
+  print('[DATA] MadeIn Apps: ${madeInApps.length}');
+  final madeInCompanies = await flutterBelgiumData.getMadeInCompanies();
+  print('[DATA] MadeIn Companies: ${madeInCompanies.length}');
+  final madeInDevelopers = ([...await flutterBelgiumData.getMadeInDevelopers()]..sort((dev1, dev2) {
+      final nameA = (dev1.name ?? dev1.githubUserName).toLowerCase();
+      final nameB = (dev2.name ?? dev2.githubUserName).toLowerCase();
+      return nameA.compareTo(nameB);
+    }));
+  print('[DATA] MadeIn Developers: ${madeInDevelopers.length}');
   final latestApps = shuffleNoAdjacentDuplicates(madeInApps, (app) => app.name);
+  print('[DATA] Latest shuffled MadeIn Apps: ${latestApps.length}');
 
   runApp(Document(
     title: 'Flutter Belgium',
@@ -65,10 +76,7 @@ void main() async {
     },
     head: [
       link(rel: 'preconnect', href: 'https://fonts.googleapis.com'),
-      link(
-          rel: 'preconnect',
-          href: 'https://fonts.gstatic.com',
-          attributes: {'crossorigin': ''}),
+      link(rel: 'preconnect', href: 'https://fonts.gstatic.com', attributes: {'crossorigin': ''}),
       link(
         rel: 'stylesheet',
         href:
@@ -81,8 +89,7 @@ void main() async {
       Route(
         path: '/',
         title: 'Flutter Belgium',
-        settings:
-            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 1.0),
+        settings: const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 1.0),
         builder: (context, state) => HomePage(
           upcomingMeetups: upcomingMeetups.take(3).toList(),
           pastMeetups: pastMeetups.take(3).toList(),
@@ -98,8 +105,7 @@ void main() async {
       Route(
         path: '/privacy',
         title: 'Privacy Policy | Flutter Belgium',
-        builder: (context, state) =>
-            PrivacyPolicyPage(communityLinks: communityLinks),
+        builder: (context, state) => PrivacyPolicyPage(communityLinks: communityLinks),
       ),
       Route(
         path: '/terms',
@@ -109,8 +115,7 @@ void main() async {
       Route(
         path: '/branding',
         title: 'Branding | Flutter Belgium',
-        builder: (context, state) =>
-            BrandingPage(communityLinks: communityLinks),
+        builder: (context, state) => BrandingPage(communityLinks: communityLinks),
       ),
       Route(
         path: '/app',
@@ -125,10 +130,8 @@ void main() async {
       Route(
         path: '/become-a-sponsor',
         title: 'Become a Sponsor | Flutter Belgium',
-        settings:
-            const RouteSettings(changeFreq: ChangeFreq.monthly, priority: 0.7),
-        builder: (context, state) =>
-            BecomeASponsorPage(communityLinks: communityLinks),
+        settings: const RouteSettings(changeFreq: ChangeFreq.monthly, priority: 0.7),
+        builder: (context, state) => BecomeASponsorPage(communityLinks: communityLinks),
       ),
       Route(
         path: '/meetups',
@@ -162,8 +165,7 @@ void main() async {
       Route(
         path: '/made-in-flutter-belgium/apps',
         title: 'Apps | Made in Flutter Belgium',
-        settings:
-            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
+        settings: const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
         builder: (context, state) => MadeInAppsPage(
           apps: madeInApps,
           communityLinks: communityLinks,
@@ -172,8 +174,7 @@ void main() async {
       Route(
         path: '/made-in-flutter-belgium/companies',
         title: 'Companies | Made in Flutter Belgium',
-        settings:
-            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
+        settings: const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
         builder: (context, state) => MadeInCompaniesPage(
           companies: madeInCompanies,
           communityLinks: communityLinks,
@@ -182,8 +183,7 @@ void main() async {
       Route(
         path: '/made-in-flutter-belgium/developers',
         title: 'Developers | Made in Flutter Belgium',
-        settings:
-            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
+        settings: const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
         builder: (context, state) => MadeInDevelopersPage(
           developers: madeInDevelopers,
           communityLinks: communityLinks,
@@ -209,10 +209,8 @@ void main() async {
         ),
       for (final developer in madeInDevelopers)
         Route(
-          path:
-              '/made-in-flutter-belgium/developers/${toSlug(developer.githubUserName)}',
-          title:
-              '${developer.name ?? developer.githubUserName} | Made in Flutter Belgium',
+          path: '/made-in-flutter-belgium/developers/${toSlug(developer.githubUserName)}',
+          title: '${developer.name ?? developer.githubUserName} | Made in Flutter Belgium',
           builder: (context, state) => MadeInDeveloperDetailPage(
             developer: developer,
             communityLinks: communityLinks,
