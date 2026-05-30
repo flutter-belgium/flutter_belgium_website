@@ -15,7 +15,7 @@ class TestimonialsSection extends StatelessComponent {
     final row2 = testimonials.sublist(mid);
 
     return section(classes: 'testimonials', [
-      div(classes: 'testimonials-header', [
+      div(classes: 'testimonials-header container', [
         div(classes: 'testimonials-header-row', [
           div(classes: 'testimonials-header-text', [
             p(classes: 'section-label', [Component.text('Community')]),
