@@ -90,7 +90,8 @@ class TestimonialsSection extends StatelessComponent {
         div(classes: 'testimonial-author-info', [
           p(classes: 'testimonial-name', [Component.text(author.name)]),
           if (company != null)
-            p(classes: 'testimonial-role',
+            p(
+                classes: 'testimonial-role',
                 [Component.text('${company.jobTitle} at ${company.name}')]),
         ]),
       ]),

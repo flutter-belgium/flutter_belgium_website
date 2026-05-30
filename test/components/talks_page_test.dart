@@ -30,8 +30,8 @@ void main() {
 
   testComponents('TalksPage renders one card per talk with video',
       (tester) async {
-    tester.pumpComponent(
-        TalksPage(talks: [talkWithVideo, talkWithVideo], communityLinks: links));
+    tester.pumpComponent(TalksPage(
+        talks: [talkWithVideo, talkWithVideo], communityLinks: links));
     expect(
       find.byComponentPredicate(
         (c) =>
@@ -63,9 +63,7 @@ void main() {
         TalksPage(talks: [talkWithVideo], communityLinks: links));
     expect(
       find.byComponentPredicate(
-        (c) =>
-            c is DomComponent &&
-            (c.classes?.contains('talk-link') ?? false),
+        (c) => c is DomComponent && (c.classes?.contains('talk-link') ?? false),
         description: 'talk link',
       ),
       findsOneComponent,

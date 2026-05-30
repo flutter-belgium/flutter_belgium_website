@@ -15,7 +15,8 @@ class NextMeetupSection extends StatelessComponent {
       div(classes: 'next-meetup-inner container', [
         const p(classes: 'section-label', [Component.text('Upcoming')]),
         div(classes: 'section-header-row', [
-          const h2(classes: 'section-title',
+          const h2(
+              classes: 'section-title',
               [Component.text('Join us at our next event')]),
           a(
             [const Component.text('View all meetups')],

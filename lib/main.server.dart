@@ -133,7 +133,8 @@ void main() async {
       Route(
         path: '/meetups',
         title: 'Meetups | Flutter Belgium',
-        settings: const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
+        settings:
+            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
         builder: (context, state) => MeetupsPage(
           upcomingMeetups: upcomingMeetups,
           pastMeetups: pastMeetups,
@@ -144,7 +145,8 @@ void main() async {
         Route(
           path: '/meetups/${meetup.slug}',
           title: '${meetup.title} | Flutter Belgium',
-          settings: const RouteSettings(changeFreq: ChangeFreq.monthly, priority: 0.8),
+          settings: const RouteSettings(
+              changeFreq: ChangeFreq.monthly, priority: 0.8),
           builder: (context, state) => MeetupDetailPage(
             meetup: meetup,
             communityLinks: communityLinks,
@@ -153,7 +155,8 @@ void main() async {
       Route(
         path: '/talks',
         title: 'Talks | Flutter Belgium',
-        settings: const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.8),
+        settings:
+            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.8),
         builder: (context, state) => TalksPage(
           talks: talks,
           communityLinks: communityLinks,

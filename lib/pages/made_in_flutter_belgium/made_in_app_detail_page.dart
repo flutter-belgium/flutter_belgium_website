@@ -66,7 +66,8 @@ class MadeInAppDetailPage extends StatelessComponent {
               MadeInCard(
                 name: app.publisherCompany!.name,
                 localImagePath: app.publisherCompany!.localLogoPath,
-                href: '/made-in-flutter-belgium/companies/${toSlug(app.publisherCompany!.name)}',
+                href:
+                    '/made-in-flutter-belgium/companies/${toSlug(app.publisherCompany!.name)}',
                 isLogo: true,
               ),
             ]),

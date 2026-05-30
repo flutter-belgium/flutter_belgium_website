@@ -104,13 +104,16 @@ class _MeetupDetailHero extends StatelessComponent {
             ),
           div(classes: 'meetup-detail-info-card', [
             div(classes: 'meetup-detail-info-row', [
-              span(classes: 'meetup-detail-info-icon',
+              span(
+                  classes: 'meetup-detail-info-icon',
                   [const Component.text('📅')]),
-              span(classes: 'meetup-detail-info-text',
+              span(
+                  classes: 'meetup-detail-info-text',
                   [Component.text(_formatDate(meetup.date))]),
             ]),
             div(classes: 'meetup-detail-info-row', [
-              span(classes: 'meetup-detail-info-icon',
+              span(
+                  classes: 'meetup-detail-info-icon',
                   [const Component.text('📍')]),
               span(classes: 'meetup-detail-info-text', [
                 Component.text('${meetup.hostCompany} · ${meetup.location}')
@@ -137,12 +140,27 @@ class _MeetupDetailHero extends StatelessComponent {
 
   String _formatDate(DateTime date) {
     const days = [
-      'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
       'Sunday'
     ];
     const months = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec'
     ];
     final dayName = days[date.weekday - 1];
     return '$dayName, ${months[date.month - 1]} ${date.day}, ${date.year}';
@@ -159,8 +177,8 @@ class _MeetupDetailTalks extends StatelessComponent {
     return section(id: 'meetup-talks', classes: 'talks', [
       div(classes: 'talks-inner container', [
         const p(classes: 'section-label', [Component.text('Talks')]),
-        const h2(classes: 'section-title',
-            [Component.text('Rewatch every talk')]),
+        const h2(
+            classes: 'section-title', [Component.text('Rewatch every talk')]),
         div(classes: 'talks-grid', [
           for (final (index, talk) in talks.indexed)
             if (talk.thumbnailUrl != null)

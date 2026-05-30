@@ -16,7 +16,8 @@ class TalksSection extends StatelessComponent {
       div(classes: 'talks-inner container', [
         const p(classes: 'section-label', [Component.text('Talks')]),
         div(classes: 'section-header-row', [
-          const h2(classes: 'section-title',
+          const h2(
+              classes: 'section-title',
               [Component.text('Catch up on what you missed')]),
           a(
             [const Component.text('View all talks')],

@@ -16,7 +16,10 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
     name: 'Koen Van Looveren',
     avatarUrl: '/assets/team/koen.jpeg',
     companies: [
-      PersonCompany(name: 'impaktfull', jobTitle: 'Founder & Flutter Developer', isActive: true),
+      PersonCompany(
+          name: 'impaktfull',
+          jobTitle: 'Founder & Flutter Developer',
+          isActive: true),
     ],
     githubUsername: 'vanlooverenkoen',
     socialLinks: PersonSocialLinks(
@@ -30,7 +33,10 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
     name: 'Jens Gyselinck',
     avatarUrl: '/assets/team/jens.jpeg',
     companies: [
-      PersonCompany(name: 'diskwriter', jobTitle: 'Founder & Flutter Developer', isActive: true),
+      PersonCompany(
+          name: 'diskwriter',
+          jobTitle: 'Founder & Flutter Developer',
+          isActive: true),
     ],
     githubUsername: 'diskwriter',
     socialLinks: PersonSocialLinks(
@@ -44,7 +50,8 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
     name: 'Kris Pypen',
     avatarUrl: '/assets/team/kris.jpeg',
     companies: [
-      PersonCompany(name: 'Flutter Belgium', jobTitle: 'Organiser', isActive: true),
+      PersonCompany(
+          name: 'Flutter Belgium', jobTitle: 'Organiser', isActive: true),
     ],
     githubUsername: 'krispypen',
     socialLinks: PersonSocialLinks(
@@ -257,13 +264,15 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
 
   @override
   Future<List<Talk>> getAllTalks() async {
-    final allTalks = _allMeetups.expand((m) => m.talks).toList()..sort((a, b) => b.date.compareTo(a.date));
+    final allTalks = _allMeetups.expand((m) => m.talks).toList()
+      ..sort((a, b) => b.date.compareTo(a.date));
     return List.unmodifiable(allTalks);
   }
 
   @override
   Future<CommunityLinks> getCommunityLinks() async => const CommunityLinks(
-        slackInviteUrl: 'https://join.slack.com/t/flutter-belgium/shared_invite/zt-2w7m73ron-5NZWiebmvxXAzBairbAisw',
+        slackInviteUrl:
+            'https://join.slack.com/t/flutter-belgium/shared_invite/zt-2w7m73ron-5NZWiebmvxXAzBairbAisw',
         youtubeChannelUrl: 'https://www.youtube.com/@flutter-belgium',
         meetupUrl: 'https://www.meetup.com/flutter-belgium/',
         linkedinUrl: 'https://www.linkedin.com/company/flutter-belgium/',
@@ -272,13 +281,16 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
       );
 
   @override
-  Future<List<Company>> getHostingCompanies() async => List.unmodifiable(_companies);
+  Future<List<Company>> getHostingCompanies() async =>
+      List.unmodifiable(_companies);
 
   @override
-  Future<List<Testimonial>> getTestimonials() async => List.unmodifiable(_testimonials);
+  Future<List<Testimonial>> getTestimonials() async =>
+      List.unmodifiable(_testimonials);
 
   @override
-  Future<List<TeamMember>> getTeamMembers() async => List.unmodifiable(_teamMembers);
+  Future<List<TeamMember>> getTeamMembers() async =>
+      List.unmodifiable(_teamMembers);
 
   @override
   Future<List<Sponsor>> getSponsors() async => List.unmodifiable(_sponsors);

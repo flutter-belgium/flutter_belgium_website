@@ -26,8 +26,8 @@ void main() {
 
   testComponents('TalksSection skips talks without a YouTube URL',
       (tester) async {
-    tester.pumpComponent(
-        TalksSection(talks: [talkWithVideo, talkWithoutVideo]));
+    tester
+        .pumpComponent(TalksSection(talks: [talkWithVideo, talkWithoutVideo]));
     expect(find.tag('img'), findsOneComponent);
   });
 

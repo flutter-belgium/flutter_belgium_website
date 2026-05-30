@@ -6,7 +6,8 @@ import 'package:flutter_belgium_website/data/models/made_in_flutter_belgium/made
 import 'package:flutter_belgium_website/data/models/made_in_flutter_belgium/made_in_developer_links.dart';
 import 'package:flutter_belgium_website/data/repositories/made_in_flutter_belgium_repository.dart';
 
-class MockMadeInFlutterBelgiumRepository implements MadeInFlutterBelgiumRepository {
+class MockMadeInFlutterBelgiumRepository
+    implements MadeInFlutterBelgiumRepository {
   static final List<MadeInApp> _apps = [
     MadeInApp(
       name: 'Sample App One',
@@ -125,8 +126,10 @@ class MockMadeInFlutterBelgiumRepository implements MadeInFlutterBelgiumReposito
   Future<List<MadeInApp>> getApps() async => List.unmodifiable(_apps);
 
   @override
-  Future<List<MadeInCompany>> getCompanies() async => List.unmodifiable(_companies);
+  Future<List<MadeInCompany>> getCompanies() async =>
+      List.unmodifiable(_companies);
 
   @override
-  Future<List<MadeInDeveloper>> getDevelopers() async => List.unmodifiable(_developers);
+  Future<List<MadeInDeveloper>> getDevelopers() async =>
+      List.unmodifiable(_developers);
 }
