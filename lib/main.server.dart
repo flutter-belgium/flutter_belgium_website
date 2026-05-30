@@ -13,6 +13,9 @@ import 'package:flutter_belgium_website/pages/made_in_flutter_belgium/made_in_co
 import 'package:flutter_belgium_website/pages/made_in_flutter_belgium/made_in_company_detail_page.dart';
 import 'package:flutter_belgium_website/pages/made_in_flutter_belgium/made_in_developer_detail_page.dart';
 import 'package:flutter_belgium_website/pages/made_in_flutter_belgium/made_in_developers_page.dart';
+import 'package:flutter_belgium_website/pages/meetups/meetup_detail_page.dart';
+import 'package:flutter_belgium_website/pages/meetups/meetups_page.dart';
+import 'package:flutter_belgium_website/pages/talks/talks_page.dart';
 import 'package:flutter_belgium_website/pages/app_page.dart';
 import 'package:flutter_belgium_website/pages/become_a_sponsor_page.dart';
 import 'package:flutter_belgium_website/pages/privacy_policy_page.dart';
@@ -29,14 +32,15 @@ void main() async {
 
   final repository = MockFlutterBelgiumRepository();
 
-  final nextMeetup = await repository.getNextMeetup();
+  final upcomingMeetups = await repository.getUpcomingMeetups();
   final pastMeetups = await repository.getPastMeetups();
+  final allMeetups = [...upcomingMeetups, ...pastMeetups];
   final talks = await repository.getAllTalks();
   final communityLinks = await repository.getCommunityLinks();
   final companies = await repository.getHostingCompanies();
   final testimonials = shuffleNoAdjacentDuplicates(
     await repository.getTestimonials(),
-    (t) => t.authorName,
+    (t) => t.author.name,
   );
   final teamMembers = await repository.getTeamMembers();
   final sponsors = await repository.getSponsors();
@@ -80,9 +84,9 @@ void main() async {
         settings:
             const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 1.0),
         builder: (context, state) => HomePage(
-          nextMeetup: nextMeetup,
-          pastMeetups: pastMeetups,
-          talks: talks,
+          upcomingMeetups: upcomingMeetups.take(3).toList(),
+          pastMeetups: pastMeetups.take(3).toList(),
+          talks: talks.take(3).toList(),
           communityLinks: communityLinks,
           companies: companies,
           testimonials: testimonials,
@@ -125,6 +129,35 @@ void main() async {
             const RouteSettings(changeFreq: ChangeFreq.monthly, priority: 0.7),
         builder: (context, state) =>
             BecomeASponsorPage(communityLinks: communityLinks),
+      ),
+      Route(
+        path: '/meetups',
+        title: 'Meetups | Flutter Belgium',
+        settings: const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
+        builder: (context, state) => MeetupsPage(
+          upcomingMeetups: upcomingMeetups,
+          pastMeetups: pastMeetups,
+          communityLinks: communityLinks,
+        ),
+      ),
+      for (final meetup in allMeetups)
+        Route(
+          path: '/meetups/${meetup.slug}',
+          title: '${meetup.title} | Flutter Belgium',
+          settings: const RouteSettings(changeFreq: ChangeFreq.monthly, priority: 0.8),
+          builder: (context, state) => MeetupDetailPage(
+            meetup: meetup,
+            communityLinks: communityLinks,
+          ),
+        ),
+      Route(
+        path: '/talks',
+        title: 'Talks | Flutter Belgium',
+        settings: const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.8),
+        builder: (context, state) => TalksPage(
+          talks: talks,
+          communityLinks: communityLinks,
+        ),
       ),
       Route(
         path: '/made-in-flutter-belgium/apps',

@@ -6,14 +6,12 @@ import 'package:flutter_belgium_website/data/models/made_in_flutter_belgium/made
 import 'package:flutter_belgium_website/data/models/made_in_flutter_belgium/made_in_developer_links.dart';
 import 'package:flutter_belgium_website/data/repositories/made_in_flutter_belgium_repository.dart';
 
-class MockMadeInFlutterBelgiumRepository
-    implements MadeInFlutterBelgiumRepository {
+class MockMadeInFlutterBelgiumRepository implements MadeInFlutterBelgiumRepository {
   static final List<MadeInApp> _apps = [
     MadeInApp(
       name: 'Sample App One',
       localIconPath: 'assets/made_in/projects/Sample App One/app_icon.webp',
       description: 'A sample Flutter app built in Belgium.',
-      publisher: 'Sample Co',
       releaseDate: DateTime(2024, 6, 1),
       isSunsetted: false,
       sunsetReason: null,
@@ -30,7 +28,6 @@ class MockMadeInFlutterBelgiumRepository
       name: 'Sample App Two',
       localIconPath: 'assets/made_in/projects/Sample App Two/app_icon.webp',
       description: 'Another sample Flutter app.',
-      publisher: null,
       releaseDate: DateTime(2024, 9, 15),
       isSunsetted: false,
       sunsetReason: null,
@@ -44,7 +41,6 @@ class MockMadeInFlutterBelgiumRepository
       name: 'Sample App Three',
       localIconPath: 'assets/made_in/projects/Sample App Three/app_icon.webp',
       description: 'Third sample app — now sunset.',
-      publisher: 'Third Co',
       releaseDate: DateTime(2025, 1, 20),
       isSunsetted: true,
       sunsetReason: 'Discontinued by publisher.',
@@ -129,10 +125,8 @@ class MockMadeInFlutterBelgiumRepository
   Future<List<MadeInApp>> getApps() async => List.unmodifiable(_apps);
 
   @override
-  Future<List<MadeInCompany>> getCompanies() async =>
-      List.unmodifiable(_companies);
+  Future<List<MadeInCompany>> getCompanies() async => List.unmodifiable(_companies);
 
   @override
-  Future<List<MadeInDeveloper>> getDevelopers() async =>
-      List.unmodifiable(_developers);
+  Future<List<MadeInDeveloper>> getDevelopers() async => List.unmodifiable(_developers);
 }

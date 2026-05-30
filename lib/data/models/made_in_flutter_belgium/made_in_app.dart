@@ -8,7 +8,7 @@ class MadeInApp {
     required this.name,
     required this.localIconPath,
     required this.description,
-    this.publisher,
+    this.publisherCompany,
     required this.releaseDate,
     required this.isSunsetted,
     this.sunsetReason,
@@ -22,7 +22,7 @@ class MadeInApp {
   final String name;
   final String localIconPath;
   final String description;
-  final String? publisher;
+  final MadeInCompanyRef? publisherCompany;
   final String? sunsetReason;
   final String? localBannerPath;
   final DateTime releaseDate;
@@ -43,7 +43,10 @@ class MadeInApp {
       name: json['name'] as String,
       localIconPath: toLocalImagePath(rawIcon),
       description: json['description'] as String? ?? '',
-      publisher: json['publisher'] as String?,
+      publisherCompany: json['publisherCompany'] != null
+          ? MadeInCompanyRef.fromJson(
+              (json['publisherCompany'] as Map).cast<String, dynamic>())
+          : null,
       releaseDate: DateTime.parse(json['releaseData'] as String),
       isSunsetted: json['isSunsetted'] as bool? ?? false,
       sunsetReason: json['sunsetReason'] as String?,

@@ -15,7 +15,7 @@ class TestimonialsSection extends StatelessComponent {
     final row2 = testimonials.sublist(mid);
 
     return section(classes: 'testimonials', [
-      div(classes: 'testimonials-header', [
+      div(classes: 'testimonials-header container', [
         div(classes: 'testimonials-header-row', [
           div(classes: 'testimonials-header-text', [
             p(classes: 'section-label', [Component.text('Community')]),
@@ -77,30 +77,21 @@ class TestimonialsSection extends StatelessComponent {
   }
 
   Component _card(Testimonial testimonial) {
+    final author = testimonial.author;
+    final company = author.activeCompany;
     return div(classes: 'testimonial-card', [
       p(classes: 'testimonial-text', [Component.text(testimonial.text)]),
       div(classes: 'testimonial-author', [
-        if (testimonial.authorAvatarUrl != null)
-          img(
-            src: testimonial.authorAvatarUrl!,
-            alt: testimonial.authorName,
-            classes: 'testimonial-avatar',
-          )
-        else
-          div(classes: 'testimonial-avatar-placeholder', [
-            img(
-              src: '/assets/logo-mark-white.svg',
-              alt: '',
-              classes: 'testimonial-avatar-placeholder-icon',
-            ),
-          ]),
+        img(
+          src: author.avatarUrl,
+          alt: author.name,
+          classes: 'testimonial-avatar',
+        ),
         div(classes: 'testimonial-author-info', [
-          p(
-              classes: 'testimonial-name',
-              [Component.text(testimonial.authorName)]),
-          p(
-              classes: 'testimonial-role',
-              [Component.text(testimonial.authorRole)]),
+          p(classes: 'testimonial-name', [Component.text(author.name)]),
+          if (company != null)
+            p(classes: 'testimonial-role',
+                [Component.text('${company.jobTitle} at ${company.name}')]),
         ]),
       ]),
     ]);

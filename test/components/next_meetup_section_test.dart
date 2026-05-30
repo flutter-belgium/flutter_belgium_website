@@ -1,41 +1,50 @@
 import 'package:flutter_belgium_website/components/next_meetup_section.dart';
-import 'package:flutter_belgium_website/data/models/community_links.dart';
 import 'package:flutter_belgium_website/data/models/meetup.dart';
+import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_test/jaspr_test.dart';
 
 void main() {
-  const links = CommunityLinks(
-    slackInviteUrl: 'https://slack.com/invite/test',
-    youtubeChannelUrl: 'https://youtube.com/@test',
-    meetupUrl: 'https://meetup.com/test',
-    linkedinUrl: 'https://linkedin.com/test',
-    githubUrl: 'https://github.com/test',
-    madeInUrl: 'https://madein.test',
-  );
-
   final meetup = Meetup(
     id: 'next',
-    title: 'Flutter Belgium #4',
-    date: DateTime(2024, 9, 19),
+    title: 'Flutter Belgium #27',
+    date: DateTime(2099, 9, 19),
     hostCompany: 'Cronos',
     location: 'Leuven',
     thumbnailUrl: '/assets/meetup/flutter-belgium-meetup.avif',
   );
 
-  testComponents('NextMeetupSection shows thumbnail and CTA', (tester) async {
-    tester.pumpComponent(
-        NextMeetupSection(meetup: meetup, communityLinks: links));
-    expect(find.tag('img'), findsOneComponent);
-    expect(find.text('Sign up for this event'), findsOneComponent);
+  testComponents('NextMeetupSection renders a card per meetup', (tester) async {
+    tester.pumpComponent(NextMeetupSection(meetups: [meetup]));
+    expect(
+      find.byComponentPredicate(
+        (c) =>
+            c is DomComponent &&
+            (c.classes?.contains('meetup-card-thumbnail') ?? false),
+      ),
+      findsOneComponent,
+    );
   });
 
-  testComponents('NextMeetupSection shows fallback when no meetup',
+  testComponents('NextMeetupSection renders View all meetups button',
       (tester) async {
-    tester.pumpComponent(
-        const NextMeetupSection(meetup: null, communityLinks: links));
+    tester.pumpComponent(NextMeetupSection(meetups: [meetup]));
+    expect(find.text('View all meetups'), findsOneComponent);
+  });
+
+  testComponents('NextMeetupSection shows empty state when no meetups',
+      (tester) async {
+    tester.pumpComponent(const NextMeetupSection(meetups: []));
     expect(
-        find.text(
-            'No upcoming meetup scheduled yet. Follow us on Slack to stay updated.'),
-        findsOneComponent);
+      find.text(
+          'No upcoming meetups scheduled yet. Follow us on Slack to stay updated.'),
+      findsOneComponent,
+    );
+  });
+
+  testComponents(
+      'NextMeetupSection renders View all meetups link even when no meetups',
+      (tester) async {
+    tester.pumpComponent(const NextMeetupSection(meetups: []));
+    expect(find.text('View all meetups'), findsOneComponent);
   });
 }

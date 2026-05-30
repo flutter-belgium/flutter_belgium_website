@@ -1,12 +1,11 @@
+import 'package:flutter_belgium_website/data/models/person.dart';
+
 class Testimonial {
   const Testimonial({
     required this.text,
-    required this.authorName,
-    required this.authorRole,
-    this.authorAvatarUrl,
+    required this.author,
   });
+
   final String text;
-  final String authorName;
-  final String authorRole;
-  final String? authorAvatarUrl;
+  final Person author;
 }

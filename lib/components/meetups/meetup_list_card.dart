@@ -3,35 +3,8 @@ import 'package:jaspr/dom.dart';
 
 import 'package:flutter_belgium_website/data/models/meetup.dart';
 
-class PastMeetupsSection extends StatelessComponent {
-  const PastMeetupsSection({required this.meetups, super.key});
-
-  final List<Meetup> meetups;
-
-  @override
-  Component build(BuildContext context) {
-    return section(classes: 'past-meetups', [
-      div(classes: 'past-meetups-inner container', [
-        const p(classes: 'section-label', [Component.text('Past meetups')]),
-        div(classes: 'section-header-row', [
-          const h2(classes: 'section-title',
-              [Component.text("Where we've been")]),
-          a(
-            [const Component.text('View all meetups')],
-            href: '/meetups',
-            classes: 'btn btn-secondary',
-          ),
-        ]),
-        div(classes: 'meetups-grid', [
-          for (final meetup in meetups) _MeetupCard(meetup: meetup),
-        ]),
-      ]),
-    ]);
-  }
-}
-
-class _MeetupCard extends StatelessComponent {
-  const _MeetupCard({required this.meetup});
+class MeetupListCard extends StatelessComponent {
+  const MeetupListCard({required this.meetup, super.key});
 
   final Meetup meetup;
 

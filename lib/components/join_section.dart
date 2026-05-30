@@ -11,7 +11,7 @@ class JoinSection extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     return section(id: 'join', classes: 'join', [
-      div(classes: 'join-inner', [
+      div(classes: 'join-inner container', [
         const h2(
             classes: 'section-title', [Component.text('Join the community')]),
         const p(classes: 'join-sub', [

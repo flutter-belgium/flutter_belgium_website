@@ -23,7 +23,7 @@ class MadeInCompanyDetailPage extends StatelessComponent {
     return Component.fragment([
       NavBar(communityLinks: communityLinks),
       section(classes: 'made-in-detail', [
-        div(classes: 'made-in-detail-inner', [
+        div(classes: 'made-in-detail-inner container', [
           div(classes: 'made-in-detail-header', [
             img(
               src: '/${company.localLogoPath}',

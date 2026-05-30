@@ -15,39 +15,39 @@ class MadeInPageShell extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    return section(classes: 'made-in-page', [
-      div(classes: 'made-in-page-inner', [
+    return section(classes: 'list-page', [
+      div(classes: 'list-page-inner container', [
         h1(
-            classes: 'made-in-hero-tagline',
+            classes: 'list-page-tagline',
             [const Component.text('Made in (Flutter) Belgium')]),
-        p(classes: 'made-in-hero-sub', [
+        p(classes: 'list-page-sub', [
           const Component.text(
               'Apps, companies and developers from Belgium building with Flutter.'),
         ]),
-        div(classes: 'hero-actions made-in-tabs', [
+        div(classes: 'hero-actions page-tabs', [
           a(
-            [const Component.text('apps')],
+            [const Component.text('Apps')],
             href: '/made-in-flutter-belgium/apps',
             classes: activeTab == MadeInTab.apps
                 ? 'btn btn-primary'
                 : 'btn btn-secondary',
           ),
           a(
-            [const Component.text('companies')],
+            [const Component.text('Companies')],
             href: '/made-in-flutter-belgium/companies',
             classes: activeTab == MadeInTab.companies
                 ? 'btn btn-primary'
                 : 'btn btn-secondary',
           ),
           a(
-            [const Component.text('developers')],
+            [const Component.text('Developers')],
             href: '/made-in-flutter-belgium/developers',
             classes: activeTab == MadeInTab.developers
                 ? 'btn btn-primary'
                 : 'btn btn-secondary',
           ),
         ]),
-        div(classes: 'made-in-content', child),
+        div(classes: 'list-page-content', child),
       ]),
     ]);
   }

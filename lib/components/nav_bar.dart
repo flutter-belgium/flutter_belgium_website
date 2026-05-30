@@ -30,8 +30,8 @@ class NavBar extends StatelessComponent {
         nav(classes: 'navbar-links', [
           a([Component.text('About')], href: '#about', classes: 'navbar-link'),
           a([Component.text('Meetups')],
-              href: '#meetups', classes: 'navbar-link'),
-          a([Component.text('Talks')], href: '#talks', classes: 'navbar-link'),
+              href: '/meetups', classes: 'navbar-link'),
+          a([Component.text('Talks')], href: '/talks', classes: 'navbar-link'),
           div(classes: 'navbar-dropdown', [
             a(
               [Component.text('Made in (Flutter) Belgium')],
@@ -40,17 +40,17 @@ class NavBar extends StatelessComponent {
             ),
             div(classes: 'navbar-dropdown-menu', [
               a(
-                [Component.text('apps')],
+                [Component.text('Apps')],
                 href: '/made-in-flutter-belgium/apps',
                 classes: 'navbar-dropdown-item',
               ),
               a(
-                [Component.text('companies')],
+                [Component.text('Companies')],
                 href: '/made-in-flutter-belgium/companies',
                 classes: 'navbar-dropdown-item',
               ),
               a(
-                [Component.text('developers')],
+                [Component.text('Developers')],
                 href: '/made-in-flutter-belgium/developers',
                 classes: 'navbar-dropdown-item',
               ),
@@ -73,24 +73,24 @@ class NavBar extends StatelessComponent {
         a([Component.text('About')],
             href: '#about', classes: 'navbar-mobile-link'),
         a([Component.text('Meetups')],
-            href: '#meetups', classes: 'navbar-mobile-link'),
+            href: '/meetups', classes: 'navbar-mobile-link'),
         a([Component.text('Talks')],
-            href: '#talks', classes: 'navbar-mobile-link'),
+            href: '/talks', classes: 'navbar-mobile-link'),
         span(
             classes: 'navbar-mobile-section',
             [const Component.text('Made in')]),
         a(
-          [Component.text('apps')],
+          [Component.text('Apps')],
           href: '/made-in-flutter-belgium/apps',
           classes: 'navbar-mobile-link navbar-mobile-sublink',
         ),
         a(
-          [Component.text('companies')],
+          [Component.text('Companies')],
           href: '/made-in-flutter-belgium/companies',
           classes: 'navbar-mobile-link navbar-mobile-sublink',
         ),
         a(
-          [Component.text('developers')],
+          [Component.text('Developers')],
           href: '/made-in-flutter-belgium/developers',
           classes: 'navbar-mobile-link navbar-mobile-sublink',
         ),

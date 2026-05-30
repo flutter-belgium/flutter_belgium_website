@@ -1,6 +1,9 @@
 import 'package:flutter_belgium_website/data/models/community_links.dart';
 import 'package:flutter_belgium_website/data/models/company.dart';
 import 'package:flutter_belgium_website/data/models/meetup.dart';
+import 'package:flutter_belgium_website/data/models/person.dart';
+import 'package:flutter_belgium_website/data/models/person_company.dart';
+import 'package:flutter_belgium_website/data/models/person_social_links.dart';
 import 'package:flutter_belgium_website/data/models/sponsor.dart';
 import 'package:flutter_belgium_website/data/models/talk.dart';
 import 'package:flutter_belgium_website/data/models/team_member.dart';
@@ -20,13 +23,75 @@ void main() {
       expect(meetup.id, '1');
       expect(meetup.description, isNull);
     });
+
+    test('slug is derived from title', () {
+      final meetup = Meetup(
+        id: '1',
+        title: 'Flutter Belgium #22',
+        date: DateTime(2026, 2, 3),
+        hostCompany: 'Acme',
+        location: 'Ghent',
+      );
+      expect(meetup.slug, 'flutter-belgium-22');
+    });
+
+    test('talks defaults to empty list', () {
+      final meetup = Meetup(
+        id: '1',
+        title: 'Flutter Belgium #1',
+        date: DateTime(2024, 3, 14),
+        hostCompany: 'iO',
+        location: 'Ghent',
+      );
+      expect(meetup.talks, isEmpty);
+    });
+
+    test('talks contains provided talks', () {
+      final talk = Talk(
+        id: 't1',
+        title: 'A talk',
+        date: DateTime(2024, 3, 14),
+        speakers: const [],
+      );
+      final meetup = Meetup(
+        id: '1',
+        title: 'Flutter Belgium #1',
+        date: DateTime(2024, 3, 14),
+        hostCompany: 'iO',
+        location: 'Ghent',
+        talks: [talk],
+      );
+      expect(meetup.talks, hasLength(1));
+      expect(meetup.talks.first.id, 't1');
+    });
   });
 
   group('Talk', () {
-    test('constructs with youtubeUrl and derives thumbnail', () {
-      const talk = Talk(youtubeUrl: 'https://www.youtube.com/watch?v=abc123');
-      expect(talk.youtubeUrl, startsWith('https://'));
+    final talk = Talk(
+      id: 'talk-1',
+      title: 'Building reactive UIs',
+      date: DateTime(2026, 2, 3),
+      youtubeUrl: 'https://www.youtube.com/watch?v=abc123',
+      speakers: const [],
+    );
+
+    test('constructs with all fields', () {
+      expect(talk.id, 'talk-1');
+      expect(talk.title, 'Building reactive UIs');
+    });
+
+    test('thumbnailUrl derived from youtubeUrl when present', () {
       expect(talk.thumbnailUrl, contains('abc123'));
+    });
+
+    test('thumbnailUrl is null when youtubeUrl is null', () {
+      final noVideo = Talk(
+        id: 'talk-2',
+        title: 'No Video Yet',
+        date: DateTime(2026, 2, 3),
+        speakers: const [],
+      );
+      expect(noVideo.thumbnailUrl, isNull);
     });
   });
 
@@ -59,17 +124,23 @@ void main() {
   });
 
   group('Testimonial', () {
-    test('constructs with all required fields', () {
+    test('constructs with text and Person author', () {
       const t = Testimonial(
         text: 'Great meetup!',
-        authorName: 'Jan Peeters',
-        authorRole: 'Flutter Developer at iO',
-        authorAvatarUrl: 'https://i.pravatar.cc/80?img=1',
+        author: Person(
+          id: 'p1',
+          name: 'Jan Peeters',
+          avatarUrl: '/avatar.jpg',
+          companies: [
+            PersonCompany(
+                name: 'iO', jobTitle: 'Flutter Developer', isActive: true)
+          ],
+          socialLinks: PersonSocialLinks(),
+        ),
       );
       expect(t.text, 'Great meetup!');
-      expect(t.authorName, 'Jan Peeters');
-      expect(t.authorRole, 'Flutter Developer at iO');
-      expect(t.authorAvatarUrl, 'https://i.pravatar.cc/80?img=1');
+      expect(t.author.name, 'Jan Peeters');
+      expect(t.author.activeCompany?.name, 'iO');
     });
   });
 

@@ -11,7 +11,7 @@ class HeroSection extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     return section(classes: 'hero', [
-      div(classes: 'hero-inner', [
+      div(classes: 'hero-inner container', [
         div(classes: 'hero-content', [
           const h1(
               classes: 'hero-tagline',

@@ -23,7 +23,7 @@ class MadeInAppDetailPage extends StatelessComponent {
     return Component.fragment([
       NavBar(communityLinks: communityLinks),
       section(classes: 'made-in-detail', [
-        div(classes: 'made-in-detail-inner', [
+        div(classes: 'made-in-detail-inner container', [
           div(classes: 'made-in-detail-header', [
             img(
               src: '/${app.localIconPath}',
@@ -32,10 +32,6 @@ class MadeInAppDetailPage extends StatelessComponent {
             ),
             div(classes: 'made-in-detail-meta', [
               h1(classes: 'made-in-detail-title', [Component.text(app.name)]),
-              if (app.publisher != null)
-                p(
-                    classes: 'made-in-detail-subtitle',
-                    [Component.text(app.publisher!)]),
               p(
                   classes: 'made-in-detail-subtitle',
                   [Component.text(_formatDate(app.releaseDate))]),
@@ -62,24 +58,23 @@ class MadeInAppDetailPage extends StatelessComponent {
                     classes: 'made-in-screenshot'),
             ]),
           ],
-          if (app.involvedCompanies.isNotEmpty) ...[
+          if (app.publisherCompany != null) ...[
             p(
                 classes: 'made-in-detail-section-title',
-                [const Component.text('Companies involved')]),
+                [const Component.text('Publisher')]),
             div(classes: 'made-in-grid-logos', [
-              for (final c in app.involvedCompanies)
-                MadeInCard(
-                  name: c.name,
-                  localImagePath: c.localLogoPath,
-                  href: '/made-in-flutter-belgium/companies/${toSlug(c.name)}',
-                  isLogo: true,
-                ),
+              MadeInCard(
+                name: app.publisherCompany!.name,
+                localImagePath: app.publisherCompany!.localLogoPath,
+                href: '/made-in-flutter-belgium/companies/${toSlug(app.publisherCompany!.name)}',
+                isLogo: true,
+              ),
             ]),
           ],
           if (app.developers.isNotEmpty) ...[
             p(
                 classes: 'made-in-detail-section-title',
-                [const Component.text('Developers')]),
+                [const Component.text('Dev team')]),
             div(classes: 'made-in-ref-grid', [
               for (final d in app.developers)
                 MadeInCard(
@@ -87,6 +82,20 @@ class MadeInAppDetailPage extends StatelessComponent {
                   localImagePath: d.localAvatarPath,
                   href:
                       '/made-in-flutter-belgium/developers/${toSlug(d.githubUserName)}',
+                ),
+            ]),
+          ],
+          if (app.involvedCompanies.isNotEmpty) ...[
+            p(
+                classes: 'made-in-detail-section-title',
+                [const Component.text('Involved companies')]),
+            div(classes: 'made-in-grid-logos-sm', [
+              for (final c in app.involvedCompanies)
+                MadeInCard(
+                  name: c.name,
+                  localImagePath: c.localLogoPath,
+                  href: '/made-in-flutter-belgium/companies/${toSlug(c.name)}',
+                  isLogo: true,
                 ),
             ]),
           ],

@@ -10,9 +10,9 @@ void main() {
       child: [],
     ));
     expect(find.text('Made in (Flutter) Belgium'), findsOneComponent);
-    expect(find.text('apps'), findsOneComponent);
-    expect(find.text('companies'), findsOneComponent);
-    expect(find.text('developers'), findsOneComponent);
+    expect(find.text('Apps'), findsOneComponent);
+    expect(find.text('Companies'), findsOneComponent);
+    expect(find.text('Developers'), findsOneComponent);
   });
 
   testComponents('MadeInPageShell marks the active tab with btn-primary',

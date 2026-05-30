@@ -1,79 +1,38 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
 
-import 'package:flutter_belgium_website/data/models/community_links.dart';
+import 'package:flutter_belgium_website/components/meetups/meetup_list_card.dart';
 import 'package:flutter_belgium_website/data/models/meetup.dart';
 
 class NextMeetupSection extends StatelessComponent {
-  const NextMeetupSection(
-      {required this.meetup, required this.communityLinks, super.key});
+  const NextMeetupSection({required this.meetups, super.key});
 
-  final Meetup? meetup;
-  final CommunityLinks communityLinks;
+  final List<Meetup> meetups;
 
   @override
   Component build(BuildContext context) {
-    final current = meetup;
     return section(id: 'meetups', classes: 'next-meetup', [
-      div(classes: 'next-meetup-inner', [
-        const h2(
-            classes: 'section-title',
-            [Component.text('Join us at our next event')]),
-        if (current != null) ...[
-          if (current.thumbnailUrl != null)
-            if (current.meetupUrl != null)
-              a(
-                [
-                  img(
-                    src: current.thumbnailUrl!,
-                    alt:
-                        '${current.title}, ${_formatDate(current.date)}, ${current.hostCompany}, ${current.location}',
-                    classes: 'next-meetup-thumbnail',
-                  ),
-                ],
-                href: current.meetupUrl!,
-                classes: 'next-meetup-thumbnail-link',
-                attributes: {'target': '_blank', 'rel': 'noopener noreferrer'},
-              )
-            else
-              img(
-                src: current.thumbnailUrl!,
-                alt:
-                    '${current.title}, ${_formatDate(current.date)}, ${current.hostCompany}, ${current.location}',
-                classes: 'next-meetup-thumbnail',
-              ),
-          div(classes: 'hero-actions', [
-            a(
-              [const Component.text('Sign up for this event')],
-              href: communityLinks.meetupUrl,
-              classes: 'btn btn-outline-white',
-              attributes: {'target': '_blank', 'rel': 'noopener noreferrer'},
-            ),
-          ]),
-        ] else
+      div(classes: 'next-meetup-inner container', [
+        const p(classes: 'section-label', [Component.text('Upcoming')]),
+        div(classes: 'section-header-row', [
+          const h2(classes: 'section-title',
+              [Component.text('Join us at our next event')]),
+          a(
+            [const Component.text('View all meetups')],
+            href: '/meetups',
+            classes: 'btn btn-outline-white',
+          ),
+        ]),
+        if (meetups.isEmpty)
           const p(classes: 'no-meetup-message', [
             Component.text(
-                'No upcoming meetup scheduled yet. Follow us on Slack to stay updated.'),
+                'No upcoming meetups scheduled yet. Follow us on Slack to stay updated.'),
+          ])
+        else
+          div(classes: 'meetups-grid', [
+            for (final meetup in meetups) MeetupListCard(meetup: meetup),
           ]),
       ]),
     ]);
-  }
-
-  String _formatDate(DateTime date) {
-    const months = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
-    return '${months[date.month - 1]} ${date.day}, ${date.year}';
   }
 }
