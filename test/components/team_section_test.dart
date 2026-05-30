@@ -1,5 +1,5 @@
 import 'package:flutter_belgium_website/components/team_section.dart';
-import 'package:flutter_belgium_website/data/models/team_member.dart';
+import 'package:flutter_belgium_data/flutter_belgium_data.dart';
 import 'package:jaspr_test/jaspr_test.dart';
 
 void main() {

@@ -13,6 +13,7 @@ dependencies:
   flutter_belgium_data:
     git:
       url: https://github.com/flutter-belgium/flutter_belgium_data.git
+      ref: 06e46282ca345a95b5d23b601784697215c27c99
 
 dev_dependencies:
   build_runner: ^2.4.0

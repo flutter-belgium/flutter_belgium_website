@@ -1,5 +1,5 @@
 import 'package:flutter_belgium_website/components/nav_bar.dart';
-import 'package:flutter_belgium_website/data/models/community_links.dart';
+import 'package:flutter_belgium_data/flutter_belgium_data.dart';
 import 'package:jaspr_test/jaspr_test.dart';
 
 void main() {

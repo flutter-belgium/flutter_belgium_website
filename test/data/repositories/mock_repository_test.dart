@@ -1,9 +1,4 @@
-import 'package:flutter_belgium_website/data/models/community_links.dart';
-import 'package:flutter_belgium_website/data/models/company.dart';
-import 'package:flutter_belgium_website/data/models/meetup.dart';
-import 'package:flutter_belgium_website/data/models/person.dart';
-import 'package:flutter_belgium_website/data/models/talk.dart';
-import 'package:flutter_belgium_website/data/models/testimonial.dart';
+import 'package:flutter_belgium_data/flutter_belgium_data.dart';
 import 'package:flutter_belgium_website/data/repositories/mock_flutter_belgium_repository.dart';
 import 'package:test/test.dart';
 

@@ -1,7 +1,7 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
 
-import 'package:flutter_belgium_website/data/models/team_member.dart';
+import 'package:flutter_belgium_data/flutter_belgium_data.dart';
 
 class TeamSection extends StatelessComponent {
   const TeamSection({required this.members, super.key});

@@ -3,7 +3,7 @@ import 'package:jaspr/dom.dart';
 
 import 'package:flutter_belgium_website/components/footer.dart';
 import 'package:flutter_belgium_website/components/nav_bar.dart';
-import 'package:flutter_belgium_website/data/models/community_links.dart';
+import 'package:flutter_belgium_data/flutter_belgium_data.dart';
 
 class ScanPage extends StatelessComponent {
   const ScanPage({required this.communityLinks, super.key});

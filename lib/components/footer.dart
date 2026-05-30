@@ -1,7 +1,7 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
 
-import 'package:flutter_belgium_website/data/models/community_links.dart';
+import 'package:flutter_belgium_data/flutter_belgium_data.dart';
 
 class Footer extends StatelessComponent {
   const Footer({required this.communityLinks, super.key});

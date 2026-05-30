@@ -12,14 +12,7 @@ import 'package:flutter_belgium_website/components/sponsor_section.dart';
 import 'package:flutter_belgium_website/components/talks_section.dart';
 import 'package:flutter_belgium_website/components/team_section.dart';
 import 'package:flutter_belgium_website/components/testimonials_section.dart';
-import 'package:flutter_belgium_website/data/models/community_links.dart';
-import 'package:flutter_belgium_website/data/models/company.dart';
 import 'package:flutter_belgium_data/flutter_belgium_data.dart';
-import 'package:flutter_belgium_website/data/models/meetup.dart';
-import 'package:flutter_belgium_website/data/models/sponsor.dart';
-import 'package:flutter_belgium_website/data/models/talk.dart';
-import 'package:flutter_belgium_website/data/models/team_member.dart';
-import 'package:flutter_belgium_website/data/models/testimonial.dart';
 
 class HomePage extends StatelessComponent {
   const HomePage({

@@ -1,7 +1,7 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
 
-import 'package:flutter_belgium_website/data/models/company.dart';
+import 'package:flutter_belgium_data/flutter_belgium_data.dart';
 import 'package:flutter_belgium_website/util/shuffle_utils.dart';
 
 class HostingCompaniesSection extends StatelessComponent {

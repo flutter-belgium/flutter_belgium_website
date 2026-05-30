@@ -2,7 +2,7 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
 
 import 'package:flutter_belgium_website/components/meetups/meetup_list_card.dart';
-import 'package:flutter_belgium_website/data/models/meetup.dart';
+import 'package:flutter_belgium_data/flutter_belgium_data.dart';
 
 class NextMeetupSection extends StatelessComponent {
   const NextMeetupSection({required this.meetups, super.key});

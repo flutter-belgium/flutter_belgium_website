@@ -1,6 +1,6 @@
 import 'package:jaspr/jaspr.dart';
 
-import 'package:flutter_belgium_website/data/models/community_links.dart';
+import 'package:flutter_belgium_data/flutter_belgium_data.dart';
 import 'package:flutter_belgium_website/pages/legal_page.dart';
 
 class TermsPage extends StatelessComponent {

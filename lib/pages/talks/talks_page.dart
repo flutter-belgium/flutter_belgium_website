@@ -4,8 +4,7 @@ import 'package:jaspr/dom.dart';
 import 'package:flutter_belgium_website/components/footer.dart';
 import 'package:flutter_belgium_website/components/nav_bar.dart';
 import 'package:flutter_belgium_website/components/talk_card.dart';
-import 'package:flutter_belgium_website/data/models/community_links.dart';
-import 'package:flutter_belgium_website/data/models/talk.dart';
+import 'package:flutter_belgium_data/flutter_belgium_data.dart';
 
 class TalksPage extends StatelessComponent {
   const TalksPage({

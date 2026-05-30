@@ -6,7 +6,6 @@ import 'package:flutter_belgium_website/components/made_in_flutter_belgium/made_
 import 'package:flutter_belgium_website/components/made_in_flutter_belgium/made_in_card.dart';
 import 'package:flutter_belgium_website/components/made_in_flutter_belgium/made_in_page_shell.dart';
 import 'package:flutter_belgium_website/components/nav_bar.dart';
-import 'package:flutter_belgium_website/data/models/community_links.dart';
 import 'package:flutter_belgium_data/flutter_belgium_data.dart';
 
 class MadeInCompaniesPage extends StatelessComponent {

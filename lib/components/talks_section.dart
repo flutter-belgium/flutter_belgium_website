@@ -2,7 +2,7 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
 
 import 'package:flutter_belgium_website/components/talk_card.dart';
-import 'package:flutter_belgium_website/data/models/talk.dart';
+import 'package:flutter_belgium_data/flutter_belgium_data.dart';
 
 class TalksSection extends StatelessComponent {
   const TalksSection({required this.talks, super.key});

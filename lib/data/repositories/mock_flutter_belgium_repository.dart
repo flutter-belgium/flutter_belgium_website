@@ -1,14 +1,4 @@
-import 'package:flutter_belgium_website/data/models/community_links.dart';
-import 'package:flutter_belgium_website/data/models/company.dart';
-import 'package:flutter_belgium_website/data/models/meetup.dart';
-import 'package:flutter_belgium_website/data/models/person.dart';
-import 'package:flutter_belgium_website/data/models/person_company.dart';
-import 'package:flutter_belgium_website/data/models/person_social_links.dart';
-import 'package:flutter_belgium_website/data/models/sponsor.dart';
-import 'package:flutter_belgium_website/data/models/talk.dart';
-import 'package:flutter_belgium_website/data/models/team_member.dart';
-import 'package:flutter_belgium_website/data/models/testimonial.dart';
-import 'package:flutter_belgium_website/data/repositories/flutter_belgium_repository.dart';
+import 'package:flutter_belgium_data/flutter_belgium_data.dart';
 
 class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
   static const _koen = Person(
@@ -18,8 +8,7 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
     companies: [
       PersonCompany(
           name: 'impaktfull',
-          jobTitle: 'Founder & Flutter Developer',
-          isActive: true),
+          jobTitle: 'Founder & Flutter Developer'),
     ],
     githubUsername: 'vanlooverenkoen',
     socialLinks: PersonSocialLinks(
@@ -35,8 +24,7 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
     companies: [
       PersonCompany(
           name: 'diskwriter',
-          jobTitle: 'Founder & Flutter Developer',
-          isActive: true),
+          jobTitle: 'Founder & Flutter Developer'),
     ],
     githubUsername: 'diskwriter',
     socialLinks: PersonSocialLinks(
@@ -50,8 +38,7 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
     name: 'Kris Pypen',
     avatarUrl: '/assets/team/kris.jpeg',
     companies: [
-      PersonCompany(
-          name: 'Flutter Belgium', jobTitle: 'Organiser', isActive: true),
+      PersonCompany(name: 'Flutter Belgium', jobTitle: 'Organiser'),
     ],
     githubUsername: 'krispypen',
     socialLinks: PersonSocialLinks(

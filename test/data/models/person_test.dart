@@ -1,6 +1,4 @@
-import 'package:flutter_belgium_website/data/models/person.dart';
-import 'package:flutter_belgium_website/data/models/person_company.dart';
-import 'package:flutter_belgium_website/data/models/person_social_links.dart';
+import 'package:flutter_belgium_data/flutter_belgium_data.dart';
 import 'package:test/test.dart';
 
 void main() {
