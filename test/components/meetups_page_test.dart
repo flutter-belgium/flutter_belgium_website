@@ -49,8 +49,7 @@ void main() {
     );
   });
 
-  testComponents(
-      'MeetupsPage shows no-meetup message when no upcoming meetups',
+  testComponents('MeetupsPage shows no-meetup message when no upcoming meetups',
       (tester) async {
     tester.pumpComponent(MeetupsPage(
       upcomingMeetups: const [],

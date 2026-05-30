@@ -58,11 +58,12 @@ void main() async {
   print('[DATA] MadeIn Apps: ${madeInApps.length}');
   final madeInCompanies = await flutterBelgiumData.getMadeInCompanies();
   print('[DATA] MadeIn Companies: ${madeInCompanies.length}');
-  final madeInDevelopers = ([...await flutterBelgiumData.getMadeInDevelopers()]..sort((dev1, dev2) {
-      final nameA = (dev1.name ?? dev1.githubUserName).toLowerCase();
-      final nameB = (dev2.name ?? dev2.githubUserName).toLowerCase();
-      return nameA.compareTo(nameB);
-    }));
+  final madeInDevelopers =
+      ([...await flutterBelgiumData.getMadeInDevelopers()]..sort((dev1, dev2) {
+          final nameA = (dev1.name ?? dev1.githubUserName).toLowerCase();
+          final nameB = (dev2.name ?? dev2.githubUserName).toLowerCase();
+          return nameA.compareTo(nameB);
+        }));
   print('[DATA] MadeIn Developers: ${madeInDevelopers.length}');
   final latestApps = shuffleNoAdjacentDuplicates(madeInApps, (app) => app.name);
   print('[DATA] Latest shuffled MadeIn Apps: ${latestApps.length}');
@@ -76,7 +77,10 @@ void main() async {
     },
     head: [
       link(rel: 'preconnect', href: 'https://fonts.googleapis.com'),
-      link(rel: 'preconnect', href: 'https://fonts.gstatic.com', attributes: {'crossorigin': ''}),
+      link(
+          rel: 'preconnect',
+          href: 'https://fonts.gstatic.com',
+          attributes: {'crossorigin': ''}),
       link(
         rel: 'stylesheet',
         href:
@@ -89,7 +93,8 @@ void main() async {
       Route(
         path: '/',
         title: 'Flutter Belgium',
-        settings: const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 1.0),
+        settings:
+            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 1.0),
         builder: (context, state) => HomePage(
           upcomingMeetups: upcomingMeetups.take(3).toList(),
           pastMeetups: pastMeetups.take(3).toList(),
@@ -105,7 +110,8 @@ void main() async {
       Route(
         path: '/privacy',
         title: 'Privacy Policy | Flutter Belgium',
-        builder: (context, state) => PrivacyPolicyPage(communityLinks: communityLinks),
+        builder: (context, state) =>
+            PrivacyPolicyPage(communityLinks: communityLinks),
       ),
       Route(
         path: '/terms',
@@ -115,7 +121,8 @@ void main() async {
       Route(
         path: '/branding',
         title: 'Branding | Flutter Belgium',
-        builder: (context, state) => BrandingPage(communityLinks: communityLinks),
+        builder: (context, state) =>
+            BrandingPage(communityLinks: communityLinks),
       ),
       Route(
         path: '/app',
@@ -130,13 +137,16 @@ void main() async {
       Route(
         path: '/become-a-sponsor',
         title: 'Become a Sponsor | Flutter Belgium',
-        settings: const RouteSettings(changeFreq: ChangeFreq.monthly, priority: 0.7),
-        builder: (context, state) => BecomeASponsorPage(communityLinks: communityLinks),
+        settings:
+            const RouteSettings(changeFreq: ChangeFreq.monthly, priority: 0.7),
+        builder: (context, state) =>
+            BecomeASponsorPage(communityLinks: communityLinks),
       ),
       Route(
         path: '/meetups',
         title: 'Meetups | Flutter Belgium',
-        settings: const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
+        settings:
+            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
         builder: (context, state) => MeetupsPage(
           upcomingMeetups: upcomingMeetups,
           pastMeetups: pastMeetups,
@@ -147,7 +157,8 @@ void main() async {
         Route(
           path: '/meetups/${meetup.slug}',
           title: '${meetup.title} | Flutter Belgium',
-          settings: const RouteSettings(changeFreq: ChangeFreq.monthly, priority: 0.8),
+          settings: const RouteSettings(
+              changeFreq: ChangeFreq.monthly, priority: 0.8),
           builder: (context, state) => MeetupDetailPage(
             meetup: meetup,
             communityLinks: communityLinks,
@@ -156,7 +167,8 @@ void main() async {
       Route(
         path: '/talks',
         title: 'Talks | Flutter Belgium',
-        settings: const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.8),
+        settings:
+            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.8),
         builder: (context, state) => TalksPage(
           talks: talks,
           communityLinks: communityLinks,
@@ -165,7 +177,8 @@ void main() async {
       Route(
         path: '/made-in-flutter-belgium/apps',
         title: 'Apps | Made in Flutter Belgium',
-        settings: const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
+        settings:
+            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
         builder: (context, state) => MadeInAppsPage(
           apps: madeInApps,
           communityLinks: communityLinks,
@@ -174,7 +187,8 @@ void main() async {
       Route(
         path: '/made-in-flutter-belgium/companies',
         title: 'Companies | Made in Flutter Belgium',
-        settings: const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
+        settings:
+            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
         builder: (context, state) => MadeInCompaniesPage(
           companies: madeInCompanies,
           communityLinks: communityLinks,
@@ -183,7 +197,8 @@ void main() async {
       Route(
         path: '/made-in-flutter-belgium/developers',
         title: 'Developers | Made in Flutter Belgium',
-        settings: const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
+        settings:
+            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
         builder: (context, state) => MadeInDevelopersPage(
           developers: madeInDevelopers,
           communityLinks: communityLinks,
@@ -209,8 +224,10 @@ void main() async {
         ),
       for (final developer in madeInDevelopers)
         Route(
-          path: '/made-in-flutter-belgium/developers/${toSlug(developer.githubUserName)}',
-          title: '${developer.name ?? developer.githubUserName} | Made in Flutter Belgium',
+          path:
+              '/made-in-flutter-belgium/developers/${toSlug(developer.githubUserName)}',
+          title:
+              '${developer.name ?? developer.githubUserName} | Made in Flutter Belgium',
           builder: (context, state) => MadeInDeveloperDetailPage(
             developer: developer,
             communityLinks: communityLinks,

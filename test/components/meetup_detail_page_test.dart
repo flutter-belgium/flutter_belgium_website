@@ -133,8 +133,7 @@ void main() {
     expect(find.text('Building reactive UIs — Jane Doe'), findsOneComponent);
   });
 
-  testComponents(
-      'MeetupDetailPage shows TBD card for talk without YouTube URL',
+  testComponents('MeetupDetailPage shows TBD card for talk without YouTube URL',
       (tester) async {
     tester.pumpComponent(MeetupDetailPage(
       meetup: upcomingMeetupWithTbdTalk,

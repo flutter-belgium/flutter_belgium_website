@@ -25,7 +25,8 @@ class TalksPage extends StatelessComponent {
       section(classes: 'talks', [
         div(classes: 'talks-inner container', [
           const p(classes: 'section-label', [Component.text('Talks')]),
-          const h1(classes: 'section-title',
+          const h1(
+              classes: 'section-title',
               [Component.text('Catch up on what you missed')]),
           div(classes: 'talks-grid', [
             for (final talk in withVideo) TalkCard(talk: talk),
