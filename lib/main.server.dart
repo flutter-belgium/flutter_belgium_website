@@ -92,10 +92,7 @@ void main() async {
       link(rel: 'icon', type: 'image/svg+xml', href: 'assets/logo-mark.svg'),
       script(src: 'nav.js', defer: true),
     ],
-    body: Router(
-        errorBuilder: (context, state) =>
-            NotFoundPage(communityLinks: communityLinks),
-        routes: [
+    body: Router(routes: [
           Route(
             path: '/',
             title: 'Flutter Belgium',
@@ -148,6 +145,12 @@ void main() async {
             title: 'Review | Flutter Belgium',
             builder: (context, state) =>
                 ReviewPage(communityLinks: communityLinks),
+          ),
+          Route(
+            path: '/not-found',
+            title: 'Page Not Found | Flutter Belgium',
+            builder: (context, state) =>
+                NotFoundPage(communityLinks: communityLinks),
           ),
           Route(
             path: '/become-a-sponsor',
