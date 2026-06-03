@@ -19,6 +19,7 @@ import 'package:flutter_belgium_website/pages/talks/talks_page.dart';
 import 'package:flutter_belgium_website/pages/app_page.dart';
 import 'package:flutter_belgium_website/pages/become_a_sponsor_page.dart';
 import 'package:flutter_belgium_website/pages/privacy_policy_page.dart';
+import 'package:flutter_belgium_website/pages/not_found_page.dart';
 import 'package:flutter_belgium_website/pages/review_page.dart';
 import 'package:flutter_belgium_website/pages/scan_page.dart';
 import 'package:flutter_belgium_website/pages/terms_page.dart';
@@ -91,156 +92,163 @@ void main() async {
       link(rel: 'icon', type: 'image/svg+xml', href: 'assets/logo-mark.svg'),
       script(src: 'nav.js', defer: true),
     ],
-    body: Router(routes: [
-      Route(
-        path: '/',
-        title: 'Flutter Belgium',
-        settings:
-            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 1.0),
-        builder: (context, state) => HomePage(
-          upcomingMeetups: upcomingMeetups.take(3).toList(),
-          pastMeetups: pastMeetups.take(3).toList(),
-          talks: talks.take(3).toList(),
-          communityLinks: communityLinks,
-          companies: companies,
-          testimonials: testimonials,
-          members: teamMembers,
-          sponsors: sponsors,
-          latestMadeInApps: latestApps,
-        ),
-      ),
-      Route(
-        path: '/privacy',
-        title: 'Privacy Policy | Flutter Belgium',
-        builder: (context, state) =>
-            PrivacyPolicyPage(communityLinks: communityLinks),
-      ),
-      Route(
-        path: '/terms',
-        title: 'Terms & Conditions | Flutter Belgium',
-        builder: (context, state) => TermsPage(communityLinks: communityLinks),
-      ),
-      Route(
-        path: '/branding',
-        title: 'Branding | Flutter Belgium',
-        builder: (context, state) =>
-            BrandingPage(communityLinks: communityLinks),
-      ),
-      Route(
-        path: '/app',
-        title: 'Flutter Belgium App',
-        builder: (context, state) => AppPage(communityLinks: communityLinks),
-      ),
-      Route(
-        path: '/scan',
-        title: 'Flutter Belgium',
-        builder: (context, state) => ScanPage(communityLinks: communityLinks),
-      ),
-      Route(
-        path: '/review',
-        title: 'Review | Flutter Belgium',
-        builder: (context, state) =>
-            ReviewPage(communityLinks: communityLinks),
-      ),
-      Route(
-        path: '/become-a-sponsor',
-        title: 'Become a Sponsor | Flutter Belgium',
-        settings:
-            const RouteSettings(changeFreq: ChangeFreq.monthly, priority: 0.7),
-        builder: (context, state) =>
-            BecomeASponsorPage(communityLinks: communityLinks),
-      ),
-      Route(
-        path: '/meetups',
-        title: 'Meetups | Flutter Belgium',
-        settings:
-            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
-        builder: (context, state) => MeetupsPage(
-          upcomingMeetups: upcomingMeetups,
-          pastMeetups: pastMeetups,
-          communityLinks: communityLinks,
-        ),
-      ),
-      for (final meetup in allMeetups)
-        Route(
-          path: '/meetups/${meetup.slug}',
-          title: '${meetup.title} | Flutter Belgium',
-          settings: const RouteSettings(
-              changeFreq: ChangeFreq.monthly, priority: 0.8),
-          builder: (context, state) => MeetupDetailPage(
-            meetup: meetup,
-            communityLinks: communityLinks,
+    body: Router(
+        errorBuilder: (context, state) =>
+            NotFoundPage(communityLinks: communityLinks),
+        routes: [
+          Route(
+            path: '/',
+            title: 'Flutter Belgium',
+            settings: const RouteSettings(
+                changeFreq: ChangeFreq.weekly, priority: 1.0),
+            builder: (context, state) => HomePage(
+              upcomingMeetups: upcomingMeetups.take(3).toList(),
+              pastMeetups: pastMeetups.take(3).toList(),
+              talks: talks.take(3).toList(),
+              communityLinks: communityLinks,
+              companies: companies,
+              testimonials: testimonials,
+              members: teamMembers,
+              sponsors: sponsors,
+              latestMadeInApps: latestApps,
+            ),
           ),
-        ),
-      Route(
-        path: '/talks',
-        title: 'Talks | Flutter Belgium',
-        settings:
-            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.8),
-        builder: (context, state) => TalksPage(
-          talks: talks,
-          communityLinks: communityLinks,
-        ),
-      ),
-      Route(
-        path: '/made-in-flutter-belgium/apps',
-        title: 'Apps | Made in Flutter Belgium',
-        settings:
-            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
-        builder: (context, state) => MadeInAppsPage(
-          apps: madeInApps,
-          communityLinks: communityLinks,
-        ),
-      ),
-      Route(
-        path: '/made-in-flutter-belgium/companies',
-        title: 'Companies | Made in Flutter Belgium',
-        settings:
-            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
-        builder: (context, state) => MadeInCompaniesPage(
-          companies: madeInCompanies,
-          communityLinks: communityLinks,
-        ),
-      ),
-      Route(
-        path: '/made-in-flutter-belgium/developers',
-        title: 'Developers | Made in Flutter Belgium',
-        settings:
-            const RouteSettings(changeFreq: ChangeFreq.weekly, priority: 0.9),
-        builder: (context, state) => MadeInDevelopersPage(
-          developers: madeInDevelopers,
-          communityLinks: communityLinks,
-        ),
-      ),
-      for (final app in madeInApps)
-        Route(
-          path: '/made-in-flutter-belgium/apps/${toSlug(app.name)}',
-          title: '${app.name} | Made in Flutter Belgium',
-          builder: (context, state) => MadeInAppDetailPage(
-            app: app,
-            communityLinks: communityLinks,
+          Route(
+            path: '/privacy',
+            title: 'Privacy Policy | Flutter Belgium',
+            builder: (context, state) =>
+                PrivacyPolicyPage(communityLinks: communityLinks),
           ),
-        ),
-      for (final company in madeInCompanies)
-        Route(
-          path: '/made-in-flutter-belgium/companies/${toSlug(company.name)}',
-          title: '${company.name} | Made in Flutter Belgium',
-          builder: (context, state) => MadeInCompanyDetailPage(
-            company: company,
-            communityLinks: communityLinks,
+          Route(
+            path: '/terms',
+            title: 'Terms & Conditions | Flutter Belgium',
+            builder: (context, state) =>
+                TermsPage(communityLinks: communityLinks),
           ),
-        ),
-      for (final developer in madeInDevelopers)
-        Route(
-          path:
-              '/made-in-flutter-belgium/developers/${toSlug(developer.githubUserName)}',
-          title:
-              '${developer.name ?? developer.githubUserName} | Made in Flutter Belgium',
-          builder: (context, state) => MadeInDeveloperDetailPage(
-            developer: developer,
-            communityLinks: communityLinks,
+          Route(
+            path: '/branding',
+            title: 'Branding | Flutter Belgium',
+            builder: (context, state) =>
+                BrandingPage(communityLinks: communityLinks),
           ),
-        ),
-    ]),
+          Route(
+            path: '/app',
+            title: 'Flutter Belgium App',
+            builder: (context, state) =>
+                AppPage(communityLinks: communityLinks),
+          ),
+          Route(
+            path: '/scan',
+            title: 'Flutter Belgium',
+            builder: (context, state) =>
+                ScanPage(communityLinks: communityLinks),
+          ),
+          Route(
+            path: '/review',
+            title: 'Review | Flutter Belgium',
+            builder: (context, state) =>
+                ReviewPage(communityLinks: communityLinks),
+          ),
+          Route(
+            path: '/become-a-sponsor',
+            title: 'Become a Sponsor | Flutter Belgium',
+            settings: const RouteSettings(
+                changeFreq: ChangeFreq.monthly, priority: 0.7),
+            builder: (context, state) =>
+                BecomeASponsorPage(communityLinks: communityLinks),
+          ),
+          Route(
+            path: '/meetups',
+            title: 'Meetups | Flutter Belgium',
+            settings: const RouteSettings(
+                changeFreq: ChangeFreq.weekly, priority: 0.9),
+            builder: (context, state) => MeetupsPage(
+              upcomingMeetups: upcomingMeetups,
+              pastMeetups: pastMeetups,
+              communityLinks: communityLinks,
+            ),
+          ),
+          for (final meetup in allMeetups)
+            Route(
+              path: '/meetups/${meetup.slug}',
+              title: '${meetup.title} | Flutter Belgium',
+              settings: const RouteSettings(
+                  changeFreq: ChangeFreq.monthly, priority: 0.8),
+              builder: (context, state) => MeetupDetailPage(
+                meetup: meetup,
+                communityLinks: communityLinks,
+              ),
+            ),
+          Route(
+            path: '/talks',
+            title: 'Talks | Flutter Belgium',
+            settings: const RouteSettings(
+                changeFreq: ChangeFreq.weekly, priority: 0.8),
+            builder: (context, state) => TalksPage(
+              talks: talks,
+              communityLinks: communityLinks,
+            ),
+          ),
+          Route(
+            path: '/made-in-flutter-belgium/apps',
+            title: 'Apps | Made in Flutter Belgium',
+            settings: const RouteSettings(
+                changeFreq: ChangeFreq.weekly, priority: 0.9),
+            builder: (context, state) => MadeInAppsPage(
+              apps: madeInApps,
+              communityLinks: communityLinks,
+            ),
+          ),
+          Route(
+            path: '/made-in-flutter-belgium/companies',
+            title: 'Companies | Made in Flutter Belgium',
+            settings: const RouteSettings(
+                changeFreq: ChangeFreq.weekly, priority: 0.9),
+            builder: (context, state) => MadeInCompaniesPage(
+              companies: madeInCompanies,
+              communityLinks: communityLinks,
+            ),
+          ),
+          Route(
+            path: '/made-in-flutter-belgium/developers',
+            title: 'Developers | Made in Flutter Belgium',
+            settings: const RouteSettings(
+                changeFreq: ChangeFreq.weekly, priority: 0.9),
+            builder: (context, state) => MadeInDevelopersPage(
+              developers: madeInDevelopers,
+              communityLinks: communityLinks,
+            ),
+          ),
+          for (final app in madeInApps)
+            Route(
+              path: '/made-in-flutter-belgium/apps/${toSlug(app.name)}',
+              title: '${app.name} | Made in Flutter Belgium',
+              builder: (context, state) => MadeInAppDetailPage(
+                app: app,
+                communityLinks: communityLinks,
+              ),
+            ),
+          for (final company in madeInCompanies)
+            Route(
+              path:
+                  '/made-in-flutter-belgium/companies/${toSlug(company.name)}',
+              title: '${company.name} | Made in Flutter Belgium',
+              builder: (context, state) => MadeInCompanyDetailPage(
+                company: company,
+                communityLinks: communityLinks,
+              ),
+            ),
+          for (final developer in madeInDevelopers)
+            Route(
+              path:
+                  '/made-in-flutter-belgium/developers/${toSlug(developer.githubUserName)}',
+              title:
+                  '${developer.name ?? developer.githubUserName} | Made in Flutter Belgium',
+              builder: (context, state) => MadeInDeveloperDetailPage(
+                developer: developer,
+                communityLinks: communityLinks,
+              ),
+            ),
+        ]),
   ));
 }
