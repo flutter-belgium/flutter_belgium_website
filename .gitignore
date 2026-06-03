@@ -21,3 +21,4 @@ lib/*.options.dart
 
 # Made in Flutter Belgium (populated by CI, not committed)
 web/assets/made_in/
+web/assets/flutter_belgium/
