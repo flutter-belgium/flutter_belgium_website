@@ -19,6 +19,7 @@ import 'package:flutter_belgium_website/pages/talks/talks_page.dart';
 import 'package:flutter_belgium_website/pages/app_page.dart';
 import 'package:flutter_belgium_website/pages/become_a_sponsor_page.dart';
 import 'package:flutter_belgium_website/pages/privacy_policy_page.dart';
+import 'package:flutter_belgium_website/pages/review_page.dart';
 import 'package:flutter_belgium_website/pages/scan_page.dart';
 import 'package:flutter_belgium_website/pages/terms_page.dart';
 import 'package:flutter_belgium_website/util/shuffle_utils.dart';
@@ -134,6 +135,12 @@ void main() async {
         path: '/scan',
         title: 'Flutter Belgium',
         builder: (context, state) => ScanPage(communityLinks: communityLinks),
+      ),
+      Route(
+        path: '/review',
+        title: 'Review | Flutter Belgium',
+        builder: (context, state) =>
+            ReviewPage(communityLinks: communityLinks),
       ),
       Route(
         path: '/become-a-sponsor',
