@@ -5,8 +5,7 @@ import 'package:flutter_belgium_website/components/footer.dart';
 import 'package:flutter_belgium_website/components/nav_bar.dart';
 import 'package:flutter_belgium_website/data/models/community_links.dart';
 
-const _apiUrl =
-    'https://n8n.tools.flutterbelgium.be/webhook/community-stats';
+const _apiUrl = 'https://n8n.tools.flutterbelgium.be/webhook/community-stats';
 
 class StatsPage extends StatelessComponent {
   const StatsPage({required this.communityLinks, super.key});
@@ -28,12 +27,18 @@ class StatsPage extends StatelessComponent {
           div(
             classes: 'stats-grid',
             [
-              _statCard('meetup_members', 'Meetup', '/assets/icons/meetup.svg', 'members'),
-              _statCard('linkedin_followers', 'LinkedIn', '/assets/icons/linkedin.svg', 'followers'),
-              _statCard('youtube_subscribers', 'YouTube', '/assets/icons/youtube.svg', 'subscribers'),
-              _statCard('slack_members', 'Slack', '/assets/icons/slack.svg', 'members'),
-              _statCard('instagram_followers', 'Instagram', '/assets/icons/instagram.svg', 'followers'),
-              _statCard('github_followers', 'GitHub', '/assets/icons/github.svg', 'followers'),
+              _statCard('meetup_members', 'Meetup', '/assets/icons/meetup.svg',
+                  'members'),
+              _statCard('linkedin_followers', 'LinkedIn',
+                  '/assets/icons/linkedin.svg', 'followers'),
+              _statCard('youtube_subscribers', 'YouTube',
+                  '/assets/icons/youtube.svg', 'subscribers'),
+              _statCard('slack_members', 'Slack', '/assets/icons/slack.svg',
+                  'members'),
+              _statCard('instagram_followers', 'Instagram',
+                  '/assets/icons/instagram.svg', 'followers'),
+              _statCard('github_followers', 'GitHub',
+                  '/assets/icons/github.svg', 'followers'),
             ],
           ),
         ]),
