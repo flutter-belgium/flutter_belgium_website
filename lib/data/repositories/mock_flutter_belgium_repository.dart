@@ -16,10 +16,7 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
     name: 'Koen Van Looveren',
     avatarUrl: '/assets/team/koen.jpeg',
     companies: [
-      PersonCompany(
-          name: 'impaktfull',
-          jobTitle: 'Founder & Flutter Developer',
-          isActive: true),
+      PersonCompany(name: 'impaktfull', jobTitle: 'Founder & Flutter Developer', isActive: true),
     ],
     githubUsername: 'vanlooverenkoen',
     socialLinks: PersonSocialLinks(
@@ -33,10 +30,7 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
     name: 'Jens Gyselinck',
     avatarUrl: '/assets/team/jens.jpeg',
     companies: [
-      PersonCompany(
-          name: 'diskwriter',
-          jobTitle: 'Founder & Flutter Developer',
-          isActive: true),
+      PersonCompany(name: 'diskwriter', jobTitle: 'Founder & Flutter Developer', isActive: true),
     ],
     githubUsername: 'diskwriter',
     socialLinks: PersonSocialLinks(
@@ -50,14 +44,33 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
     name: 'Kris Pypen',
     avatarUrl: '/assets/team/kris.jpeg',
     companies: [
-      PersonCompany(
-          name: 'Flutter Belgium', jobTitle: 'Organiser', isActive: true),
+      PersonCompany(name: 'Flutter Belgium', jobTitle: 'Organiser', isActive: true),
     ],
     githubUsername: 'krispypen',
     socialLinks: PersonSocialLinks(
       githubUrl: 'https://github.com/krispypen',
       linkedinUrl: 'https://www.linkedin.com/in/krispypen/',
     ),
+  );
+
+  static const _gaganDeepSingh = Person(
+    id: 'person-gagan-deep-singh',
+    name: 'Gagan Deep Singh',
+    avatarUrl: '/assets/testimonials/gagan-deep-singh.jpeg',
+    companies: [
+      PersonCompany(name: 'Barco', jobTitle: 'Fullstack Engineer', isActive: true),
+    ],
+    socialLinks: PersonSocialLinks(),
+  );
+
+  static const _freDumazy = Person(
+    id: 'person-fre-dumazy',
+    name: 'Fré Dumazy',
+    avatarUrl: '/assets/testimonials/fre-dumazy.jpeg',
+    companies: [
+      PersonCompany(name: 'Skystone Apps', jobTitle: 'Freelance App Developer', isActive: true),
+    ],
+    socialLinks: PersonSocialLinks(),
   );
 
   static final List<Meetup> _allMeetups = [
@@ -222,6 +235,14 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
           'What started as a small idea has grown into a thriving community of Flutter developers across Belgium. The conversations and connections that happen at every meetup continue to surprise and motivate me.',
       author: _kris,
     ),
+    Testimonial(
+      text: 'I really enjoyed the event and loved the overall environment, it was highly engaging!',
+      author: _gaganDeepSingh,
+    ),
+    Testimonial(
+      text: 'Once again, a huge thank you for everything you keep doing!',
+      author: _freDumazy,
+    ),
   ];
 
   @override
@@ -264,15 +285,13 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
 
   @override
   Future<List<Talk>> getAllTalks() async {
-    final allTalks = _allMeetups.expand((m) => m.talks).toList()
-      ..sort((a, b) => b.date.compareTo(a.date));
+    final allTalks = _allMeetups.expand((m) => m.talks).toList()..sort((a, b) => b.date.compareTo(a.date));
     return List.unmodifiable(allTalks);
   }
 
   @override
   Future<CommunityLinks> getCommunityLinks() async => const CommunityLinks(
-        slackInviteUrl:
-            'https://join.slack.com/t/flutter-belgium/shared_invite/zt-2w7m73ron-5NZWiebmvxXAzBairbAisw',
+        slackInviteUrl: 'https://join.slack.com/t/flutter-belgium/shared_invite/zt-2w7m73ron-5NZWiebmvxXAzBairbAisw',
         youtubeChannelUrl: 'https://www.youtube.com/@flutter-belgium',
         meetupUrl: 'https://www.meetup.com/flutter-belgium/',
         linkedinUrl: 'https://www.linkedin.com/company/flutter-belgium/',
@@ -282,16 +301,13 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
       );
 
   @override
-  Future<List<Company>> getHostingCompanies() async =>
-      List.unmodifiable(_companies);
+  Future<List<Company>> getHostingCompanies() async => List.unmodifiable(_companies);
 
   @override
-  Future<List<Testimonial>> getTestimonials() async =>
-      List.unmodifiable(_testimonials);
+  Future<List<Testimonial>> getTestimonials() async => List.unmodifiable(_testimonials);
 
   @override
-  Future<List<TeamMember>> getTeamMembers() async =>
-      List.unmodifiable(_teamMembers);
+  Future<List<TeamMember>> getTeamMembers() async => List.unmodifiable(_teamMembers);
 
   @override
   Future<List<Sponsor>> getSponsors() async => List.unmodifiable(_sponsors);
