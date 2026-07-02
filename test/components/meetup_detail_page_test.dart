@@ -1,4 +1,3 @@
-import 'package:flutter_belgium_website/data/models/community_links.dart';
 import 'package:flutter_belgium_website/data/models/meetup.dart';
 import 'package:flutter_belgium_website/data/models/person.dart';
 import 'package:flutter_belgium_website/data/models/person_company.dart';
@@ -8,15 +7,10 @@ import 'package:flutter_belgium_website/pages/meetups/meetup_detail_page.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_test/jaspr_test.dart';
 
+import '../test_data.dart';
+
 void main() {
-  const links = CommunityLinks(
-    slackInviteUrl: 'https://slack.com',
-    youtubeChannelUrl: 'https://youtube.com',
-    meetupUrl: 'https://meetup.com',
-    linkedinUrl: 'https://linkedin.com',
-    githubUrl: 'https://github.com',
-    madeInUrl: '/made-in-flutter-belgium/apps',
-  );
+  const links = testCommunityLinks;
 
   const speaker = Person(
     id: 'p1',

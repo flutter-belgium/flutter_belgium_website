@@ -49,6 +49,14 @@ class Footer extends StatelessComponent {
                 'rel': 'noopener noreferrer',
                 'aria-label': 'LinkedIn'
               }),
+          a([const Component.text('Instagram')],
+              href: communityLinks.instagramUrl,
+              classes: 'footer-social-link',
+              attributes: {
+                'target': '_blank',
+                'rel': 'noopener noreferrer',
+                'aria-label': 'Instagram'
+              }),
           a([const Component.text('GitHub')],
               href: communityLinks.githubUrl,
               classes: 'footer-social-link',
@@ -73,6 +81,8 @@ class Footer extends StatelessComponent {
                 href: '/terms', classes: 'footer-legal-link'),
             a([const Component.text('Branding')],
                 href: '/branding', classes: 'footer-legal-link'),
+            a([const Component.text('Stats')],
+                href: '/stats', classes: 'footer-legal-link'),
           ]),
         ]),
       ]),

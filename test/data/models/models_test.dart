@@ -1,4 +1,3 @@
-import 'package:flutter_belgium_website/data/models/community_links.dart';
 import 'package:flutter_belgium_website/data/models/company.dart';
 import 'package:flutter_belgium_website/data/models/meetup.dart';
 import 'package:flutter_belgium_website/data/models/person.dart';
@@ -9,6 +8,8 @@ import 'package:flutter_belgium_website/data/models/talk.dart';
 import 'package:flutter_belgium_website/data/models/team_member.dart';
 import 'package:flutter_belgium_website/data/models/testimonial.dart';
 import 'package:test/test.dart';
+
+import '../../test_data.dart';
 
 void main() {
   group('Meetup', () {
@@ -97,14 +98,7 @@ void main() {
 
   group('CommunityLinks', () {
     test('constructs correctly', () {
-      const links = CommunityLinks(
-        slackInviteUrl: 'https://slack.com/invite/xxx',
-        youtubeChannelUrl: 'https://youtube.com/@flutter-belgium',
-        meetupUrl: 'https://www.meetup.com/flutter-belgium/',
-        linkedinUrl: 'https://www.linkedin.com/company/flutter-belgium/',
-        githubUrl: 'https://github.com/flutter-belgium',
-        madeInUrl: 'https://madein.flutterbelgium.be',
-      );
+      const links = testCommunityLinks;
       expect(links.slackInviteUrl, startsWith('https://'));
       expect(links.meetupUrl, startsWith('https://'));
     });

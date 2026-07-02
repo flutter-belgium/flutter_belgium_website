@@ -21,6 +21,7 @@ import 'package:flutter_belgium_website/pages/become_a_sponsor_page.dart';
 import 'package:flutter_belgium_website/pages/privacy_policy_page.dart';
 import 'package:flutter_belgium_website/pages/not_found_page.dart';
 import 'package:flutter_belgium_website/pages/review_page.dart';
+import 'package:flutter_belgium_website/pages/stats_page.dart';
 import 'package:flutter_belgium_website/pages/scan_page.dart';
 import 'package:flutter_belgium_website/pages/terms_page.dart';
 import 'package:flutter_belgium_website/util/shuffle_utils.dart';
@@ -141,6 +142,13 @@ void main() async {
         path: '/review',
         title: 'Review | Flutter Belgium',
         builder: (context, state) => ReviewPage(communityLinks: communityLinks),
+      ),
+      Route(
+        path: '/stats',
+        title: 'Community Stats | Flutter Belgium',
+        settings:
+            const RouteSettings(changeFreq: ChangeFreq.daily, priority: 0.7),
+        builder: (context, state) => StatsPage(communityLinks: communityLinks),
       ),
       Route(
         path: '/not-found',

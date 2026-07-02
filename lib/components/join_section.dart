@@ -67,6 +67,18 @@ class JoinSection extends StatelessComponent {
           a(
             [
               img(
+                  src: '/assets/icons/instagram.svg',
+                  alt: '',
+                  classes: 'btn-icon'),
+              const Component.text('Instagram'),
+            ],
+            href: communityLinks.instagramUrl,
+            classes: 'btn btn-outline-white',
+            attributes: {'target': '_blank', 'rel': 'noopener noreferrer'},
+          ),
+          a(
+            [
+              img(
                   src: '/assets/icons/github.svg',
                   alt: '',
                   classes: 'btn-icon'),

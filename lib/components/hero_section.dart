@@ -35,6 +35,8 @@ class HeroSection extends StatelessComponent {
                 '/assets/icons/meetup.svg', 'Meetup', communityLinks.meetupUrl),
             _socialLink('/assets/icons/linkedin.svg', 'LinkedIn',
                 communityLinks.linkedinUrl),
+            _socialLink('/assets/icons/instagram.svg', 'Instagram',
+                communityLinks.instagramUrl),
             _socialLink(
                 '/assets/icons/github.svg', 'GitHub', communityLinks.githubUrl),
           ]),

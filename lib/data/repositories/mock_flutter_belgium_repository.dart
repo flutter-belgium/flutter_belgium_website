@@ -276,6 +276,7 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
         youtubeChannelUrl: 'https://www.youtube.com/@flutter-belgium',
         meetupUrl: 'https://www.meetup.com/flutter-belgium/',
         linkedinUrl: 'https://www.linkedin.com/company/flutter-belgium/',
+        instagramUrl: 'https://www.instagram.com/flutterbelgium/',
         githubUrl: 'https://github.com/flutter-belgium',
         madeInUrl: '/made-in-flutter-belgium/apps',
       );

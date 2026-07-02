@@ -1,17 +1,11 @@
 import 'package:flutter_belgium_website/components/hero_section.dart';
-import 'package:flutter_belgium_website/data/models/community_links.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_test/jaspr_test.dart';
 
+import '../test_data.dart';
+
 void main() {
-  const links = CommunityLinks(
-    slackInviteUrl: 'https://slack.com/invite/test',
-    youtubeChannelUrl: 'https://youtube.com/@test',
-    meetupUrl: 'https://meetup.com/test',
-    linkedinUrl: 'https://linkedin.com/test',
-    githubUrl: 'https://github.com/test',
-    madeInUrl: 'https://madein.test',
-  );
+  const links = testCommunityLinks;
 
   testComponents('HeroSection renders two-column layout with logomark',
       (tester) async {
