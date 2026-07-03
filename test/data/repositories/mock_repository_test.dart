@@ -57,11 +57,11 @@ void main() {
     }
   });
 
-  test('getTestimonials returns 5 testimonials with non-empty fields',
+  test('getTestimonials returns 7 testimonials with non-empty fields',
       () async {
     final testimonials = await repo.getTestimonials();
     expect(testimonials, isA<List<Testimonial>>());
-    expect(testimonials, hasLength(5));
+    expect(testimonials, hasLength(7));
     for (final t in testimonials) {
       expect(t.text, isNotEmpty);
       expect(t.author.name, isNotEmpty);

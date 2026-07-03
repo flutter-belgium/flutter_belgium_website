@@ -84,6 +84,28 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
     socialLinks: PersonSocialLinks(),
   );
 
+  static const _williamVerhaeghe = Person(
+    id: 'person-william-verhaeghe',
+    name: 'William Verhaeghe',
+    avatarUrl: '/assets/testimonials/william-verhaeghe.jpeg',
+    companies: [
+      PersonCompany(
+          name: 'Lightning Development', jobTitle: 'Freelance', isActive: true),
+    ],
+    socialLinks: PersonSocialLinks(),
+  );
+
+  static const _yarnoVanDeWeyer = Person(
+    id: 'person-yarno-van-de-weyer',
+    name: 'Yarno Van de Weyer',
+    avatarUrl: '/assets/testimonials/yarno-van-de-weyer.jpeg',
+    companies: [
+      PersonCompany(
+          name: 'm-Path Software', jobTitle: 'App Developer', isActive: true),
+    ],
+    socialLinks: PersonSocialLinks(),
+  );
+
   static final List<Meetup> _allMeetups = [
     Meetup(
       id: 'meetup-3',
@@ -248,12 +270,23 @@ class MockFlutterBelgiumRepository implements FlutterBelgiumRepository {
     ),
     Testimonial(
       text:
-          'I really enjoyed the event and loved the overall environment, it was highly engaging!',
+          'This was my first time attending the event#27 on 3 Jun 2026 as Aaltra, but I didn\'t feel like a stranger for a single moment. The hosts were fantastic, ensuring everyone was warmly welcomed and fully included. I\'m already looking forward to the next one!',
       author: _gaganDeepSingh,
     ),
     Testimonial(
-      text: 'Once again, a huge thank you for everything you keep doing!',
+      text:
+          'Flutter Belgium has done an great job at bringing the Belgian community together. By moving the meetups from city to city, they\'ve allowed newcomers to easily join and give everyone a chance to speak in front of an audience. Combining the in-person meetups with a high quality live stream really pushes it to the next level.',
       author: _freDumazy,
+    ),
+    Testimonial(
+      text:
+          'Flutter Belgium is the perfect place to meet both new people and skilled developers. Every meetup is different and always a good way to encounter different views or how to solve problems you will encounter in the future.',
+      author: _williamVerhaeghe,
+    ),
+    Testimonial(
+      text:
+          'I really enjoy going to these meetups. The talks are always interesting (duh). But the community itself is the best part: welcoming, knowledgeable, and just very nice people to be around. And as a bonus, the food is great too. Highly recommend if you\'re into Flutter/Dart development and want to connect with others in the space.',
+      author: _yarnoVanDeWeyer,
     ),
   ];
 
